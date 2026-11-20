@@ -90,6 +90,11 @@ export function share(name, mime, bytes) {
   return true;
 }
 
+/** 형식별 기본 앱 상태 [{ext, state: 'mine'|'none'|'other', label, pkg}] (앱이 아니면 빈 목록) */
+export function defaultStatus() { try { return isNative && N.defaultStatus ? JSON.parse(N.defaultStatus()) : []; } catch { return []; } }
+export function chooseDefault(ext) { if (isNative) N.chooseDefault(ext); }
+export function openAppSettings(pkg) { if (isNative) N.openAppSettings(pkg || ''); }
+export function onDefaultsChanged(handler) { window.__native.onDefaultsChanged = handler; }
 export function print(title) { if (isNative) N.print(title); else window.print(); }
 export function exitApp() { if (isNative) N.exit(); }
 /** 다른 앱에서 "이 앱으로 열기"로 넘어온 파일 받기 */

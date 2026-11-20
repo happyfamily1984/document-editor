@@ -3,12 +3,16 @@ package com.docedit.app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.print.PrintAttributes;
 import android.print.PrintManager;
 import android.provider.OpenableColumns;
+import android.provider.Settings;
+import android.webkit.MimeTypeMap;
 import android.util.Base64;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceRequest;
@@ -17,6 +21,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
@@ -26,6 +31,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /** 웹으로 만든 편집기 화면을 담는 껍데기. 파일 열기·저장·공유·인쇄·뒤로가기를 이어 준다. */
@@ -98,8 +104,40 @@ public class MainActivity extends Activity {
         if (jsReady) deliverPending();
     }
 
+    // 기본 앱으로 정할 수 있는 형식: {확장자, 기기가 모를 때 쓸 MIME}
+    private static final String[][] DEFAULT_TYPES = {
+        {"hwp", "application/x-hwp"}, {"hwpx", "application/vnd.hancom.hwpx"},
+        {"docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"}, {"doc", "application/msword"},
+        {"xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}, {"xls", "application/vnd.ms-excel"},
+        {"pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"}, {"ppt", "application/vnd.ms-powerpoint"},
+        {"pdf", "application/pdf"}, {"txt", "text/plain"},
+    };
+
+    /** 그 형식의 파일을 열 때와 똑같은 요청(견본 파일)을 만든다. 파일 관리자가 보내는 MIME과 맞춘다. */
+    private Intent sampleIntent(String ext, String fallbackMime) {
+        String m = MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
+        Uri u = new Uri.Builder().scheme("content").authority(ShareProvider.AUTHORITY).appendPath(ShareProvider.SAMPLE + ext).build();
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setDataAndType(u, m == null ? fallbackMime : m);
+        i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        return i;
+    }
+
+    private static boolean isSample(Uri u) {
+        String last = u == null ? null : u.getLastPathSegment();
+        return u != null && ShareProvider.AUTHORITY.equals(u.getAuthority()) && last != null && last.startsWith(ShareProvider.SAMPLE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 기본 앱 고르기 창이나 설정 화면에서 돌아오면 상태를 다시 보여 준다
+        if (jsReady) web.evaluateJavascript("window.__native.onDefaultsChanged && window.__native.onDefaultsChanged()", null);
+    }
+
     private Uri incoming(Intent i) {
         if (i == null) return null;
+        if (isSample(i.getData())) return null; // 기본 앱 설정용 견본은 문서로 열지 않는다
         if (Intent.ACTION_VIEW.equals(i.getAction())) return i.getData();
         if (Intent.ACTION_SEND.equals(i.getAction())) return i.getParcelableExtra(Intent.EXTRA_STREAM);
         return null;
@@ -246,6 +284,51 @@ public class MainActivity extends Activity {
         public String openUri(String uri) {
             JSONObject info = register(Uri.parse(uri));
             return info == null ? "" : info.toString();
+        }
+
+        /** 형식마다 지금 기본 앱이 무엇인지: mine(이 앱) · none(정해지지 않음) · other(다른 앱) */
+        @JavascriptInterface
+        public String defaultStatus() {
+            JSONArray arr = new JSONArray();
+            PackageManager pm = getPackageManager();
+            for (String[] t : DEFAULT_TYPES) {
+                try {
+                    Intent i = sampleIntent(t[0], t[1]);
+                    ResolveInfo ri = pm.resolveActivity(i, PackageManager.MATCH_DEFAULT_ONLY);
+                    List<ResolveInfo> all = pm.queryIntentActivities(i, PackageManager.MATCH_DEFAULT_ONLY);
+                    String pkg = ri == null || ri.activityInfo == null ? "" : ri.activityInfo.packageName;
+                    boolean real = false; // 고르기 창(시스템)이 아니라 실제 앱으로 정해져 있는가
+                    for (ResolveInfo r : all) if (r.activityInfo != null && r.activityInfo.packageName.equals(pkg)) real = true;
+                    JSONObject o = new JSONObject().put("ext", t[0]);
+                    if (real && pkg.equals(getPackageName())) o.put("state", "mine");
+                    else if (real) o.put("state", "other").put("pkg", pkg).put("label", String.valueOf(ri.loadLabel(pm)));
+                    else o.put("state", "none");
+                    arr.put(o);
+                } catch (Exception ignored) { }
+            }
+            return arr.toString();
+        }
+
+        /** 시스템의 "연결 프로그램" 창을 띄운다. 거기서 이 앱과 "항상"을 고르면 기본 앱이 된다. */
+        @JavascriptInterface
+        public void chooseDefault(String ext) {
+            for (String[] t : DEFAULT_TYPES) {
+                if (!t[0].equals(ext)) continue;
+                try {
+                    File dir = new File(getCacheDir(), "share");
+                    dir.mkdirs();
+                    try (FileOutputStream o = new FileOutputStream(new File(dir, ShareProvider.SAMPLE + ext))) { o.write(' '); }
+                    Intent i = sampleIntent(t[0], t[1]);
+                    runOnUiThread(() -> { try { startActivity(i); } catch (Exception ignored) { } });
+                } catch (Exception ignored) { }
+            }
+        }
+
+        /** 앱 정보 화면 열기(다른 앱의 기본 설정을 풀거나, 이 앱의 기본 설정을 볼 때) */
+        @JavascriptInterface
+        public void openAppSettings(String pkg) {
+            Intent i = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + (pkg == null || pkg.isEmpty() ? getPackageName() : pkg)));
+            runOnUiThread(() -> { try { startActivity(i); } catch (Exception ignored) { } });
         }
 
         @JavascriptInterface

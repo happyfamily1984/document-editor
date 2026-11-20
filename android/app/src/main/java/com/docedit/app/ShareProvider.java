@@ -15,6 +15,8 @@ import java.io.FileNotFoundException;
 /** "공유"할 때 임시 파일을 다른 앱이 읽을 수 있게 내주는 창구(읽기 전용). */
 public class ShareProvider extends ContentProvider {
     static final String AUTHORITY = "com.docedit.app.share";
+    /** 기본 앱 설정에 쓰는 견본 파일 이름의 앞부분 */
+    static final String SAMPLE = "default-app-sample.";
 
     private File fileFor(Uri uri) throws FileNotFoundException {
         String name = uri.getLastPathSegment();

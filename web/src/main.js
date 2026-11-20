@@ -409,12 +409,43 @@ function about() {
     el('p', { class: 'small', text: '문서 편집기 1.0' })));
 }
 
+// ───────── 기본 앱 설정 ─────────
+const DEFAULT_NAMES = { hwp: '한글 (HWP)', hwpx: '한글 (HWPX)', docx: '워드 (DOCX)', doc: '워드 (DOC)', xlsx: '엑셀 (XLSX)', xls: '엑셀 (XLS)', pptx: '파워포인트 (PPTX)', ppt: '파워포인트 (PPT)', pdf: 'PDF', txt: '글 파일 (TXT)' };
+let defaultsOpen = false;
+function defaultsSheet() {
+  if (!native.isNative || defaultsOpen) return;
+  defaultsOpen = true;
+  localStorage.setItem('defaultsAsked', '1');
+  const list = el('div', { class: 'defaults' });
+  const render = () => {
+    list.replaceChildren(...native.defaultStatus().map((d) =>
+      el('div', { class: 'default-row' },
+        el('b', { class: 'k k-' + (KINDS[d.ext] || 'txt'), text: BADGE[KINDS[d.ext] || 'txt'] }),
+        el('span', {}, el('strong', { text: DEFAULT_NAMES[d.ext] || d.ext }),
+          el('small', { class: d.state === 'mine' ? 'ok' : '', text: d.state === 'mine' ? '이 앱이 기본 앱입니다' : d.state === 'other' ? `지금 기본 앱: ${d.label}` : '기본 앱이 정해지지 않았습니다' })),
+        d.state === 'mine' ? el('span', { class: 'done', text: '✓' })
+          : d.state === 'other' ? el('button', { text: '풀기', onclick: async () => {
+            if (await confirmDialog(`"${d.label}" 앱 정보 화면을 엽니다.\n거기서 "기본으로 설정" → "기본 설정 지우기"를 누른 뒤 돌아와서 [설정]을 눌러 주세요.`, '열기', '취소')) native.openAppSettings(d.pkg);
+          } })
+          : el('button', { class: 'primary', text: '설정', onclick: () => native.chooseDefault(d.ext) }))));
+  };
+  render();
+  native.onDefaultsChanged(render);
+  sheet('기본 앱으로 설정', () => el('div', {},
+    el('p', { class: 'hint', text: '[설정]을 누르면 휴대폰의 "연결 프로그램" 창이 뜹니다. 거기서 "문서 편집기"를 고르고 "항상"을 누르면, 그 형식의 파일을 누를 때 이 앱으로 바로 열립니다.' }),
+    list,
+    el('p', { class: 'hint', text: '나중에 홈 화면의 [기본 앱]에서 다시 설정할 수 있습니다.' }),
+  )).then(() => { defaultsOpen = false; native.onDefaultsChanged(null); });
+}
+
 // ───────── 연결 ─────────
 $('#open-btn').onclick = async () => { try { const ref = await native.pickFile(); if (ref) await openFile(ref); } catch (e) { alertDialog(e.message || String(e), '파일을 읽지 못했습니다'); } };
 document.querySelectorAll('[data-new]').forEach((b) => (b.onclick = () => newDoc(b.dataset.new)));
 $('#tab-recent').onclick = () => setTab('recent');
 $('#tab-star').onclick = () => setTab('star');
 $('#about-btn').onclick = about;
+$('#defaults-btn').hidden = !native.isNative;
+$('#defaults-btn').onclick = defaultsSheet;
 $('#doc-back').onclick = onBack;
 $('#doc-edit').onclick = () => setEditing(!state.editing);
 $('#doc-save').onclick = () => saveDoc();
@@ -431,4 +462,6 @@ renderRecents();
   if (id && (await getDraft(id))) await openDraft(id);
   else localStorage.removeItem('activeDraft');
 })();
+// 처음 실행할 때 기본 앱 설정을 안내한다
+if (native.isNative && !localStorage.getItem('defaultsAsked')) setTimeout(() => { if (!state.doc) defaultsSheet(); }, 600);
 native.onIncoming((ref, err) => { if (ref) openFile(ref); else alertDialog((err && err.message) || '파일을 읽지 못했습니다.', '문서를 열지 못했습니다'); });
