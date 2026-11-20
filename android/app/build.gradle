@@ -1,0 +1,35 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.docedit.app'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.docedit.app'
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+    signingConfigs {
+        // 직접 설치(사이드로드)용 서명 키. 같은 키로 서명해야 덮어 설치(업데이트)가 된다.
+        sideload {
+            storeFile rootProject.file('keystore/sideload.jks')
+            storePassword 'android'
+            keyAlias 'sideload'
+            keyPassword 'android'
+        }
+    }
+    buildTypes {
+        debug { signingConfig signingConfigs.sideload }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.sideload
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    lint { checkReleaseBuilds false }
+}

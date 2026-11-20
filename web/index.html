@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#f4f5f7" />
+    <title>문서 편집기</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <div id="home">
+      <header class="home-head"><h1>문서 편집기</h1><button id="about-btn" class="ghost">안내</button></header>
+      <div class="home-scroll">
+        <button id="open-btn" class="primary wide">기기에서 파일 열기</button>
+        <h2>새 문서</h2>
+        <div class="new-row">
+          <button data-new="docx"><b class="k k-docx">W</b>워드</button>
+          <button data-new="xlsx"><b class="k k-xlsx">X</b>엑셀</button>
+          <button data-new="pptx"><b class="k k-pptx">P</b>슬라이드</button>
+          <button data-new="hwp"><b class="k k-hwp">한</b>한글</button>
+          <button data-new="txt"><b class="k k-txt">T</b>메모</button>
+        </div>
+        <div id="draft-box" hidden><h2>임시저장 — 이어서 편집</h2><div id="draft-list"></div></div>
+        <div class="tabs" role="tablist">
+          <button id="tab-recent" role="tab" aria-selected="true">최근 문서</button>
+          <button id="tab-star" role="tab" aria-selected="false">중요 문서</button>
+        </div>
+        <div id="recent-list"></div>
+      </div>
+    </div>
+
+    <div id="doc" hidden>
+      <header id="doc-top">
+        <button id="doc-back" class="icon" aria-label="뒤로">‹</button>
+        <span id="doc-title"></span>
+        <button id="doc-edit" class="top-action">편집</button>
+        <button id="doc-save" class="top-action strong" hidden>저장</button>
+        <button id="doc-menu" class="icon" aria-label="메뉴">⋮</button>
+      </header>
+      <p id="doc-notice" hidden></p>
+      <div id="find-bar" hidden>
+        <input id="find-input" type="search" placeholder="찾을 글자" autocomplete="off" />
+        <small id="find-count"></small>
+        <button id="find-prev" class="icon" aria-label="이전">▲</button>
+        <button id="find-next" class="icon" aria-label="다음">▼</button>
+        <button id="find-close" class="icon" aria-label="찾기 닫기">✕</button>
+      </div>
+      <main id="doc-scroll"><div id="doc-body"></div></main>
+      <div id="doc-extra" hidden></div>
+      <nav id="doc-tools"></nav>
+    </div>
+
+    <div id="overlays"></div>
+    <div id="toast" hidden></div>
+    <div id="busy" hidden><div class="spinner"></div><span id="busy-msg"></span></div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

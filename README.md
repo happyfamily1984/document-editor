@@ -1,2 +1,31 @@
-# document-editor
-Document editor app (문서편집기 앱)
+# 문서 편집기 (안드로이드)
+
+한글(HWP·HWPX), 워드(DOCX·DOC), 엑셀(XLSX·XLS·CSV), 파워포인트(PPTX·PPT), PDF, 글 파일을
+폰에서 열고 고치는 앱입니다. 파일은 기기 안에서만 처리하며 인터넷 연결이 필요 없습니다.
+
+## 주요 기능
+- **임시저장**: 고칠 때마다 자동으로 기기에 보관합니다. 화면을 나가거나 앱이 종료돼도 남고,
+  다시 켜면 고치던 문서가 바로 열립니다. 홈 화면 "임시저장 — 이어서 편집"에서도 열 수 있습니다.
+- 형식별 편집
+  - DOCX: 문단 글 직접 수정, 문단 나누기/지우기, 굵게·기울임·밑줄, 정렬 (고친 부분만 원본에 반영)
+  - XLSX/XLS/CSV: 칸 값·수식 입력, 시트 전환 (XLSX는 고친 칸만 원본에 반영)
+  - PPTX: 슬라이드 글 수정, 슬라이드 복제·삭제
+  - HWP/HWPX: 문단·표 칸 글 수정
+  - PDF: 글 넣기, 쪽 돌리기, 쪽 지우기
+  - DOC/PPT(옛 형식): 글만 가져와 DOCX로 저장
+- 새 문서 만들기, 최근/중요 문서, 찾기, 확대·축소, 공유, 인쇄(PDF로 내보내기)
+- 다른 앱에서 "이 앱으로 열기"/"공유"로 파일 받기
+- 뒤로가기: 열린 창 → 편집 → 문서 순으로 되돌아가고, 홈에서는 "앱을 종료하겠습니까?"를 묻습니다.
+
+## 구조
+- `web/` — 편집기 화면(Vite). 빌드 결과가 `android/app/src/main/assets/www`에 들어갑니다.
+- `android/` — 웹 화면을 담는 안드로이드 껍데기(파일 열기·저장·공유·인쇄 연결).
+
+## 빌드
+```bash
+cd web && npm install && npm run build
+cd ../android && gradle assembleRelease   # Android SDK(플랫폼 35) 필요
+# 결과: android/app/build/outputs/apk/release/app-release.apk
+```
+`android/keystore/sideload.jks`는 직접 설치용 서명 키입니다(비밀번호 `android`). 같은 키로 서명해야
+기존 설치본 위에 업데이트할 수 있습니다. 스토어에 올릴 때는 별도의 비공개 키를 쓰세요.
