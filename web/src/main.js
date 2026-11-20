@@ -14,7 +14,7 @@ const loaders = {
 const extOf = (name) => (/\.([a-z0-9]+)$/i.exec(name || '') || [, ''])[1].toLowerCase();
 const baseOf = (name) => (name || '문서').replace(/\.[a-z0-9]+$/i, '');
 
-const state = { doc: null, name: '', uri: '', srcExt: '', dirty: false, editing: false, zoom: 1, confirmedOverwrite: false, tab: 'recent', draftId: '' };
+const state = { doc: null, name: '', uri: '', srcExt: '', dirty: false, editing: false, zoom: 1, confirmedOverwrite: false, tab: 'home', draftId: '' };
 
 // ───────── 최근 문서 ─────────
 const loadRecents = () => { try { return JSON.parse(localStorage.getItem('recents') || '[]'); } catch { return []; } };
@@ -25,35 +25,48 @@ function touchRecent(name, uri, kind) {
   const old = list.find((r) => r.uri === uri);
   saveRecents([{ name, uri, kind, time: Date.now(), star: !!(old && old.star) }, ...list.filter((r) => r.uri !== uri)]);
 }
+const when = (t) => new Date(t).toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' });
 async function renderDrafts() {
   const list = await listDrafts();
-  const box = $('#draft-box');
-  box.hidden = !list.length;
-  $('#draft-list').replaceChildren(...list.map((d) =>
-    el('div', { class: 'recent draft' },
-      el('button', { class: 'recent-main', onclick: () => openDraft(d.id) },
-        el('b', { class: 'k k-' + (KINDS[extOf(d.name)] || 'txt'), text: BADGE[KINDS[extOf(d.name)] || 'txt'] || 'T' }),
-        el('span', {}, el('strong', { text: d.name }), el('small', { text: '임시저장 · ' + new Date(d.time).toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }) }))),
-      el('button', { class: 'icon', 'aria-label': '임시저장 지우기', text: '✕', onclick: async () => { if (await confirmDialog(`"${d.name}"의 임시저장본을 지울까요?\n고친 내용이 사라집니다.`, '지우기', '취소')) { await deleteDraft(d.id); renderDrafts(); } } }))));
+  document.querySelectorAll('.draft-box').forEach((box) => {
+    box.hidden = !list.length;
+    box.querySelector('.draft-list').replaceChildren(...list.map((d) =>
+      el('div', { class: 'recent draft' },
+        el('button', { class: 'recent-main', onclick: () => openDraft(d.id) },
+          el('b', { class: 'k k-' + (KINDS[extOf(d.name)] || 'txt'), text: BADGE[KINDS[extOf(d.name)] || 'txt'] || 'T' }),
+          el('span', {}, el('strong', { text: d.name }), el('small', { text: '임시저장 · ' + when(d.time) }))),
+        el('button', { class: 'icon', 'aria-label': '임시저장 지우기', text: '✕', onclick: async () => { if (await confirmDialog(`"${d.name}"의 임시저장본을 지울까요?\n고친 내용이 사라집니다.`, '지우기', '취소')) { await deleteDraft(d.id); renderDrafts(); } } }))));
+  });
 }
 async function openDraft(id) {
   const d = await getDraft(id);
   if (!d) return renderDrafts();
   await openFile({ name: d.name, bytes: d.bytes, uri: d.uri }, { draft: d });
 }
+function toggleStar(uri) { const l = loadRecents(); const x = l.find((y) => y.uri === uri); if (x) x.star = !x.star; saveRecents(l); renderRecents(); }
+function recentRow(r) {
+  return el('div', { class: 'recent' },
+    el('button', { class: 'recent-main', onclick: () => openRecent(r) },
+      el('b', { class: 'k k-' + r.kind, text: BADGE[r.kind] || '?' }),
+      el('span', {}, el('strong', { text: r.name }), el('small', { text: when(r.time) }))),
+    el('button', { class: 'icon star', 'aria-label': '중요 표시', 'aria-pressed': String(!!r.star), text: r.star ? '★' : '☆', onclick: () => toggleStar(r.uri) }),
+    el('button', { class: 'icon more', 'aria-label': '더 보기', text: '⋮', onclick: async () => {
+      const pick = await menu(r.name, [{ label: '열기', value: 'open' }, { label: r.star ? '중요 표시 풀기' : '중요 문서로 표시', value: 'star' }, { label: '목록에서 빼기', value: 'remove', danger: true }]);
+      if (pick === 'open') openRecent(r);
+      else if (pick === 'star') toggleStar(r.uri);
+      else if (pick === 'remove') { saveRecents(loadRecents().filter((y) => y.uri !== r.uri)); renderRecents(); }
+    } }));
+}
+function fill(sel, list, emptyText) {
+  $(sel).replaceChildren(...(list.length ? list.map(recentRow) : [el('p', { class: 'empty', text: emptyText })]));
+}
 function renderRecents() {
   renderDrafts();
   const all = loadRecents();
-  const list = state.tab === 'star' ? all.filter((r) => r.star) : all;
-  const box = $('#recent-list');
-  if (!list.length) return box.replaceChildren(el('p', { class: 'empty', text: state.tab === 'star' ? '별표(☆)를 누른 문서가 여기에 모입니다.' : '아직 연 문서가 없습니다. 위에서 파일을 열거나 새 문서를 만들어 보세요.' }));
-  box.replaceChildren(...list.map((r) =>
-    el('div', { class: 'recent' },
-      el('button', { class: 'recent-main', onclick: () => openRecent(r) },
-        el('b', { class: 'k k-' + r.kind, text: BADGE[r.kind] || '?' }),
-        el('span', {}, el('strong', { text: r.name }), el('small', { text: new Date(r.time).toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }) }))),
-      el('button', { class: 'icon star', 'aria-label': '중요 표시', 'aria-pressed': String(!!r.star), text: r.star ? '★' : '☆', onclick: () => { const l = loadRecents(); const x = l.find((y) => y.uri === r.uri); if (x) x.star = !x.star; saveRecents(l); renderRecents(); } }),
-      el('button', { class: 'icon', 'aria-label': '목록에서 빼기', text: '✕', onclick: () => { saveRecents(loadRecents().filter((y) => y.uri !== r.uri)); renderRecents(); } }))));
+  const q = $('#recent-search').value.trim().toLowerCase();
+  fill('#home-recent', all.slice(0, 5), '아직 연 문서가 없습니다. 파일을 열거나 새 문서를 만들어 보세요.');
+  fill('#recent-list', q ? all.filter((r) => r.name.toLowerCase().includes(q)) : all, q ? '찾는 문서가 없습니다.' : '아직 연 문서가 없습니다.');
+  fill('#star-list', all.filter((r) => r.star), '별표(☆)를 누른 문서가 여기에 모입니다.');
 }
 async function openRecent(r) {
   try {
@@ -91,6 +104,10 @@ async function detect(name, bytes) {
   }
   if (KINDS[ext] === 'hwp') return { kind: 'hwp', ext }; // HWP 3.0 등
   if (ext === 'csv' || ext === 'tsv') return { kind: 'xlsx', ext };
+  // 은행·관공서에서 내려받는 "엑셀" 파일은 속이 HTML 표나 XML인 경우가 많다
+  const headText = new TextDecoder('latin1').decode(b.subarray(0, 3000)).toLowerCase();
+  const sheetLike = /<table|<html|urn:schemas-microsoft-com:office:spreadsheet|<\?mso-application/.test(headText);
+  if (sheetLike && (KINDS[ext] === 'xlsx' || /ms-excel|office:excel|office:spreadsheet|mso-application progid="excel/.test(headText))) return { kind: 'xlsx', ext: 'xls' };
   // 나머지는 글 파일로 본다. 글이 아닌 이진 파일이면 거절.
   const head = b.subarray(0, 4096);
   if (!(b[0] === 0xff && b[1] === 0xfe) && !(b[0] === 0xfe && b[1] === 0xff) && head.some((x) => x === 0)) throw new Error('지원하지 않는 파일 형식입니다.');
@@ -375,15 +392,15 @@ async function onBack() {
     if (state.editing) return setEditing(false);
     return closeDoc();
   }
-  if (state.tab !== 'recent') return setTab('recent');
+  if (state.tab !== 'home') return setTab('home');
   if (await confirmDialog('앱을 종료하겠습니까?')) native.exitApp();
 }
 window.__onBack = onBack;
 
 function setTab(tab) {
   state.tab = tab;
-  $('#tab-recent').setAttribute('aria-selected', String(tab === 'recent'));
-  $('#tab-star').setAttribute('aria-selected', String(tab === 'star'));
+  document.querySelectorAll('.pane').forEach((p) => (p.hidden = p.dataset.pane !== tab));
+  document.querySelectorAll('#tabbar button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
   renderRecents();
 }
 
@@ -406,14 +423,15 @@ function about() {
     el('p', { text: '한글·HWP는 한글과컴퓨터의, Word·Excel·PowerPoint는 Microsoft의 상표입니다. 이 앱은 두 회사와 관계없는 독립 앱입니다.' }),
     el('h4', { text: '오픈소스' }),
     el('p', { class: 'small', text: 'rhwp (MIT) · docx-preview (Apache-2.0) · pptx-renderer (Apache-2.0) · PDF.js (Apache-2.0) · pdf-lib (MIT) · SheetJS (Apache-2.0) · JSZip (MIT) · PptxGenJS (MIT) · cfb (Apache-2.0)' }),
-    el('p', { class: 'small', text: '문서 편집기 1.0' })));
+    el('p', { class: 'small', text: '문서 편집기 1.2' })));
 }
 
 // ───────── 기본 앱 설정 ─────────
 const DEFAULT_NAMES = { hwp: '한글 (HWP)', hwpx: '한글 (HWPX)', docx: '워드 (DOCX)', doc: '워드 (DOC)', xlsx: '엑셀 (XLSX)', xls: '엑셀 (XLS)', pptx: '파워포인트 (PPTX)', ppt: '파워포인트 (PPT)', pdf: 'PDF', txt: '글 파일 (TXT)' };
 let defaultsOpen = false;
 function defaultsSheet() {
-  if (!native.isNative || defaultsOpen) return;
+  if (!native.isNative) return;
+  if (defaultsOpen) return void (window.__native.onDefaultsChanged && window.__native.onDefaultsChanged());
   defaultsOpen = true;
   localStorage.setItem('defaultsAsked', '1');
   const list = el('div', { class: 'defaults' });
@@ -439,13 +457,24 @@ function defaultsSheet() {
 }
 
 // ───────── 연결 ─────────
-$('#open-btn').onclick = async () => { try { const ref = await native.pickFile(); if (ref) await openFile(ref); } catch (e) { alertDialog(e.message || String(e), '파일을 읽지 못했습니다'); } };
+const pickAndOpen = async () => { try { const ref = await native.pickFile(); if (ref) await openFile(ref); } catch (e) { alertDialog(e.message || String(e), '파일을 읽지 못했습니다'); } };
+$('#open-btn').onclick = pickAndOpen;
+$('#open-btn2').onclick = pickAndOpen;
 document.querySelectorAll('[data-new]').forEach((b) => (b.onclick = () => newDoc(b.dataset.new)));
-$('#tab-recent').onclick = () => setTab('recent');
-$('#tab-star').onclick = () => setTab('star');
+document.querySelectorAll('#tabbar button').forEach((b) => (b.onclick = () => setTab(b.dataset.tab)));
+$('#all-recent').onclick = () => setTab('recent');
+$('#search-btn').onclick = () => { setTab('recent'); $('#recent-search').focus(); };
+$('#settings-btn').onclick = () => setTab('settings');
+$('#recent-search').oninput = renderRecents;
+$('#menu-btn').onclick = async () => {
+  const pick = await menu('문서 편집기', [{ label: '파일 열기', value: 'open' }, { label: '최근 문서', value: 'recent' }, { label: '내 문서', value: 'mine' }, native.isNative ? { label: '기본 앱으로 설정', value: 'defaults' } : null, { label: '안내', value: 'about' }].filter(Boolean));
+  if (pick === 'open') pickAndOpen(); else if (pick === 'defaults') defaultsSheet(); else if (pick === 'about') about(); else if (pick) setTab(pick);
+};
 $('#about-btn').onclick = about;
 $('#defaults-btn').hidden = !native.isNative;
 $('#defaults-btn').onclick = defaultsSheet;
+// 기본 앱 고르기 창에서 이 앱을 골라 돌아오면 설정 창을 다시 보여 준다
+window.__native.onShowDefaults = () => { if (!state.doc) defaultsSheet(); };
 $('#doc-back').onclick = onBack;
 $('#doc-edit').onclick = () => setEditing(!state.editing);
 $('#doc-save').onclick = () => saveDoc();

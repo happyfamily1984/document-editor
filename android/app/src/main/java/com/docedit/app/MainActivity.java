@@ -44,6 +44,7 @@ public class MainActivity extends Activity {
     private int nextId = 1;
     private Uri pending;          // 다른 앱에서 넘어온, 아직 화면에 전하지 못한 파일
     private boolean jsReady;
+    private boolean showDefaults;  // 기본 앱 고르기에서 이 앱이 선택되어 돌아왔다 → 설정 창을 다시 보여 준다
     private FileOutputStream out; // 저장할 내용을 받아 두는 임시 파일
     private String createName;
 
@@ -77,6 +78,7 @@ public class MainActivity extends Activity {
             }
         });
         pending = incoming(getIntent());
+        showDefaults = isSample(getIntent().getData());
         if (state == null) web.loadUrl("https://" + HOST + "/index.html");
         else web.restoreState(state);
     }
@@ -98,6 +100,7 @@ public class MainActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+        if (isSample(intent.getData())) { showDefaults = true; if (jsReady) deliverShowDefaults(); return; }
         Uri u = incoming(intent);
         if (u == null) return;
         pending = u;
@@ -141,6 +144,12 @@ public class MainActivity extends Activity {
         if (Intent.ACTION_VIEW.equals(i.getAction())) return i.getData();
         if (Intent.ACTION_SEND.equals(i.getAction())) return i.getParcelableExtra(Intent.EXTRA_STREAM);
         return null;
+    }
+
+    private void deliverShowDefaults() {
+        if (!showDefaults) return;
+        showDefaults = false;
+        web.evaluateJavascript("window.__native.onShowDefaults && window.__native.onShowDefaults()", null);
     }
 
     private void deliverPending() {
@@ -334,7 +343,7 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public void ready() {
             jsReady = true;
-            runOnUiThread(MainActivity.this::deliverPending);
+            runOnUiThread(() -> { deliverPending(); deliverShowDefaults(); });
         }
 
         @JavascriptInterface

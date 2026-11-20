@@ -4,6 +4,7 @@ import * as XLSX from 'xlsx';
 import JSZip from 'jszip';
 import { el, toast } from '../ui.js';
 import { serializeXml, parseXml } from './ooxml-text.js';
+import { decodeText } from './text.js';
 
 const MAX_ROWS = 3000, MAX_COLS = 150;
 const SNS = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main';
@@ -72,6 +73,9 @@ export async function open({ bytes, ext, body, extra, ctx }) {
     let text;
     try { text = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { text = new TextDecoder('euc-kr').decode(bytes); }
     wb = XLSX.read(text, { type: 'string', raw: false });
+  } else if (bytes && !(bytes[0] === 0x50 && bytes[1] === 0x4b) && !(bytes[0] === 0xd0 && bytes[1] === 0xcf)) {
+    // 속이 HTML 표·XML인 "엑셀" 파일: 글자로 풀어서 읽는다(한글이 깨지지 않게)
+    wb = XLSX.read(decodeText(bytes), { type: 'string', cellFormula: true });
   } else if (bytes) wb = XLSX.read(bytes, { type: 'array', cellFormula: true, cellNF: true });
   else { wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([[]]), 'Sheet1'); }
 

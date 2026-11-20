@@ -3,30 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
-    <meta name="theme-color" content="#f4f5f7" />
+    <meta name="theme-color" content="#1b66f0" />
     <title>문서 편집기</title>
     <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
     <div id="home">
-      <header class="home-head"><h1>문서 편집기</h1><span><button id="defaults-btn" class="ghost" hidden>기본 앱</button><button id="about-btn" class="ghost">안내</button></span></header>
-      <div class="home-scroll">
-        <button id="open-btn" class="primary wide">기기에서 파일 열기</button>
-        <h2>새 문서</h2>
-        <div class="new-row">
-          <button data-new="docx"><b class="k k-docx">W</b>워드</button>
-          <button data-new="xlsx"><b class="k k-xlsx">X</b>엑셀</button>
-          <button data-new="pptx"><b class="k k-pptx">P</b>슬라이드</button>
-          <button data-new="hwp"><b class="k k-hwp">한</b>한글</button>
-          <button data-new="txt"><b class="k k-txt">T</b>메모</button>
-        </div>
-        <div id="draft-box" hidden><h2>임시저장 — 이어서 편집</h2><div id="draft-list"></div></div>
-        <div class="tabs" role="tablist">
-          <button id="tab-recent" role="tab" aria-selected="true">최근 문서</button>
-          <button id="tab-star" role="tab" aria-selected="false">중요 문서</button>
-        </div>
-        <div id="recent-list"></div>
+      <div class="panes">
+        <section class="pane" data-pane="home">
+          <div class="hero">
+            <div class="hero-bar">
+              <button id="menu-btn" class="icon" aria-label="메뉴"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h11M4 18h16"/></svg></button>
+              <div class="hero-title"><h1>문서 편집기</h1><small>모든 문서를 쉽고 빠르게</small></div>
+              <button id="search-btn" class="icon" aria-label="문서 찾기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+              <button id="settings-btn" class="icon" aria-label="설정"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-2.9-1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.2-2.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 2.9-1.2V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 2.9 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9h.1a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+            </div>
+            <div class="hero-body">
+              <div><p class="hero-kinds"><em>HWP</em> · DOCX · <em>XLSX</em><br />PPTX · PDF</p><p class="hero-copy">다양한 문서를<br />이제, 한 곳에서!</p></div>
+              <img src="./hero.webp" alt="" />
+            </div>
+          </div>
+          <div class="home-content">
+            <button id="open-btn" class="open-pill"><span class="open-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="open-sep"></span><b>파일 열기</b><span class="open-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></button>
+            <div class="card">
+              <div class="card-head"><h2>새 문서 만들기</h2></div>
+              <div class="new-row">
+                <button data-new="docx"><b class="k k-docx">W</b>워드</button>
+                <button data-new="xlsx"><b class="k k-xlsx">X</b>엑셀</button>
+                <button data-new="pptx"><b class="k k-pptx">P</b>슬라이드</button>
+                <button data-new="hwp"><b class="k k-hwp">한</b>한글</button>
+                <button data-new="txt"><b class="k k-txt">T</b>메모</button>
+              </div>
+            </div>
+            <div class="draft-box" hidden><div class="sec-head"><h2>임시저장 — 이어서 편집</h2></div><div class="draft-list"></div></div>
+            <div class="sec-head"><h2><span class="sec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>최근 문서</h2><button id="all-recent" class="link">전체보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button></div>
+            <div id="home-recent"></div>
+          </div>
+        </section>
+        <section class="pane" data-pane="recent" hidden>
+          <header class="pane-head"><h1>최근 문서</h1></header>
+          <div class="pane-body">
+            <input id="recent-search" type="search" placeholder="문서 이름으로 찾기" autocomplete="off" />
+            <div id="recent-list"></div>
+          </div>
+        </section>
+        <section class="pane" data-pane="mine" hidden>
+          <header class="pane-head"><h1>내 문서</h1></header>
+          <div class="pane-body">
+            <button id="open-btn2" class="primary wide">기기에서 파일 열기</button>
+            <div class="draft-box" hidden><div class="sec-head"><h2>임시저장 — 이어서 편집</h2></div><div class="draft-list"></div></div>
+            <div class="sec-head"><h2>중요 문서</h2></div>
+            <div id="star-list"></div>
+          </div>
+        </section>
+        <section class="pane" data-pane="settings" hidden>
+          <header class="pane-head"><h1>설정</h1></header>
+          <div class="pane-body">
+            <div class="card menu-list">
+              <button id="defaults-btn" hidden>기본 앱으로 설정<small>문서 파일을 누르면 이 앱으로 열리게 합니다</small></button>
+              <button id="about-btn">안내 · 오픈소스<small>문서 편집기 1.2</small></button>
+            </div>
+          </div>
+        </section>
       </div>
+      <nav id="tabbar">
+        <button data-tab="home" aria-selected="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 3 10.5V20a1 1 0 0 0 1 1h5v-6h6v6h5a1 1 0 0 0 1-1v-9.5z"/></svg>홈</button>
+        <button data-tab="recent" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>최근 문서</button>
+        <button data-tab="mine" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>내 문서</button>
+        <button data-tab="settings" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-2.9-1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.2-2.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 2.9-1.2V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 2.9 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9h.1a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>설정</button>
+      </nav>
     </div>
 
     <div id="doc" hidden>
