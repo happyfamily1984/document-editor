@@ -18,6 +18,65 @@ function parseInput(raw) {
   return { t: 's', v: raw };
 }
 
+/**
+ * HTML 표로 된 "엑셀" 파일(은행·관공서 내려받기)을 시트 하나로 읽는다.
+ * 표가 여러 개면 위에서 아래로 이어 붙이고, 합쳐진 칸(colspan·rowspan)과 숫자를 살린다.
+ */
+function htmlToWorkbook(text) {
+  const dom = new DOMParser().parseFromString(text, 'text/html');
+  const tables = [...dom.querySelectorAll('table')].filter((t) => !t.querySelector('table'));
+  if (!tables.length) return null;
+  const ws = {}, merges = [];
+  let top = 0, maxC = 0;
+  for (const table of tables) {
+    const taken = new Set(); // 합쳐진 칸이 차지한 자리
+    let r = 0;
+    for (const tr of table.rows) {
+      let c = 0;
+      for (const cell of tr.cells) {
+        while (taken.has(r + ',' + c)) c++;
+        const rs = Math.max(1, cell.rowSpan || 1), cs = Math.max(1, cell.colSpan || 1);
+        for (let i = 0; i < rs; i++) for (let j = 0; j < cs; j++) taken.add(r + i + ',' + (c + j));
+        if (rs > 1 || cs > 1) merges.push({ s: { r: top + r, c }, e: { r: top + r + rs - 1, c: c + cs - 1 } });
+        cell.querySelectorAll('br').forEach((br) => br.replaceWith(' '));
+        const raw = cell.textContent.replace(/\s+/g, ' ').trim();
+        if (raw) {
+          const plain = raw.replace(/,/g, '');
+          // 쉼표 숫자는 숫자로(계좌번호·0으로 시작하는 번호·아주 긴 번호는 글자 그대로)
+          const isNum = /^-?\d{1,3}(,\d{3})*(\.\d+)?$|^-?\d+(\.\d+)?$/.test(raw) && plain.replace(/\D/g, '').length <= 15 && !/^-?0\d/.test(plain);
+          ws[XLSX.utils.encode_cell({ r: top + r, c })] = isNum ? { t: 'n', v: Number(plain), w: raw, z: raw.includes(',') ? '#,##0' : 'General' } : { t: 's', v: raw, w: raw };
+        }
+        c += cs;
+        maxC = Math.max(maxC, c);
+      }
+      r++;
+    }
+    top += r + 1; // 표 사이에 한 줄 띄운다
+  }
+  ws['!ref'] = XLSX.utils.encode_range({ s: { r: 0, c: 0 }, e: { r: Math.max(top - 2, 0), c: Math.max(maxC - 1, 0) } });
+  if (merges.length) ws['!merges'] = merges;
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  return wb;
+}
+
+/** 칸 너비가 정해지지 않은 시트는 내용 길이에 맞춘다 */
+function autoWidths(ws, cols) {
+  const merged = new Set();
+  for (const m of ws['!merges'] || []) if (m.e.c > m.s.c) merged.add(XLSX.utils.encode_cell(m.s));
+  const w = new Array(cols).fill(0);
+  const range = XLSX.utils.decode_range(ws['!ref'] || 'A1');
+  for (let r = 0; r <= Math.min(range.e.r, 600); r++) for (let c = 0; c <= Math.min(range.e.c, cols - 1); c++) {
+    const a = XLSX.utils.encode_cell({ r, c }), cell = ws[a];
+    if (!cell || merged.has(a)) continue;
+    const t = String(cell.w != null ? cell.w : cell.v != null ? cell.v : '');
+    let len = 0;
+    for (const ch of t) len += ch.charCodeAt(0) > 0x2e7f ? 13 : 7.5; // 한글·한자는 넓다
+    w[c] = Math.max(w[c], len);
+  }
+  return w.map((x) => ({ wpx: Math.min(Math.max(Math.round(x + 16), 56), 300) }));
+}
+
 /** 고친 칸을 시트 XML에 반영 */
 function patchSheetXml(xml, edits, ref) {
   const data = xml.getElementsByTagNameNS(SNS, 'sheetData')[0];
@@ -75,7 +134,8 @@ export async function open({ bytes, ext, body, extra, ctx }) {
     wb = XLSX.read(text, { type: 'string', raw: false });
   } else if (bytes && !(bytes[0] === 0x50 && bytes[1] === 0x4b) && !(bytes[0] === 0xd0 && bytes[1] === 0xcf)) {
     // 속이 HTML 표·XML인 "엑셀" 파일: 글자로 풀어서 읽는다(한글이 깨지지 않게)
-    wb = XLSX.read(decodeText(bytes), { type: 'string', cellFormula: true });
+    const text = decodeText(bytes);
+    wb = (/<table/i.test(text) && htmlToWorkbook(text)) || XLSX.read(text, { type: 'string', cellFormula: true });
   } else if (bytes) wb = XLSX.read(bytes, { type: 'array', cellFormula: true, cellNF: true });
   else { wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([[]]), 'Sheet1'); }
 
@@ -127,7 +187,7 @@ export async function open({ bytes, ext, body, extra, ctx }) {
       span.set(XLSX.utils.encode_cell(m.s), m);
       for (let r = m.s.r; r <= m.e.r; r++) for (let c = m.s.c; c <= m.e.c; c++) if (r !== m.s.r || c !== m.s.c) covered.add(r + ',' + c);
     }
-    const colW = ws['!cols'] || [];
+    const colW = ws['!cols'] || (ws['!auto'] ||= autoWidths(ws, cols));
     let html = '<colgroup><col style="width:44px">';
     for (let c = 0; c < cols; c++) html += `<col style="width:${Math.min(Math.max(Math.round((colW[c] && colW[c].wpx) || 80), 40), 400)}px">`;
     html += '</colgroup><thead><tr><th></th>';

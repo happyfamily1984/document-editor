@@ -423,7 +423,7 @@ function about() {
     el('p', { text: '한글·HWP는 한글과컴퓨터의, Word·Excel·PowerPoint는 Microsoft의 상표입니다. 이 앱은 두 회사와 관계없는 독립 앱입니다.' }),
     el('h4', { text: '오픈소스' }),
     el('p', { class: 'small', text: 'rhwp (MIT) · docx-preview (Apache-2.0) · pptx-renderer (Apache-2.0) · PDF.js (Apache-2.0) · pdf-lib (MIT) · SheetJS (Apache-2.0) · JSZip (MIT) · PptxGenJS (MIT) · cfb (Apache-2.0)' }),
-    el('p', { class: 'small', text: '문서 편집기 1.2' })));
+    el('p', { class: 'small', text: '문서 편집기 1.3' })));
 }
 
 // ───────── 기본 앱 설정 ─────────
