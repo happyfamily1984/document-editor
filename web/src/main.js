@@ -122,7 +122,7 @@ async function openFile(ref, opts = {}) {
     const d = await getDraft(ref.uri);
     if (d) {
       const a = await dialog('이 문서를 고치다 만 임시저장본이 있습니다.', [{ label: '원본 열기(임시저장 삭제)', value: 'orig' }, { label: '이어서 편집', value: 'draft', kind: 'primary' }]);
-      if (a === 'draft') return openFile({ name: d.name, bytes: d.bytes, uri: d.uri }, { draft: d });
+      if (a === 'draft') return openFile({ name: d.name, bytes: d.bytes, uri: d.uri }, { draft: d, external: opts.external });
       if (a !== 'orig') return;
       await deleteDraft(d.id);
     }
@@ -150,6 +150,7 @@ async function openFile(ref, opts = {}) {
       const mod = await loaders[kind]();
       const doc = await mod.open({ bytes, name, ext, body, extra, scroll: $('#doc-scroll'), ctx: { changed: markDirty, refreshTools: renderTools } });
       const dr = opts.draft;
+      state.external = !!opts.external;
       Object.assign(state, { doc, name, uri: uri || '', srcExt: dr ? dr.srcExt : extOf(name), dirty: !!dr, editing: false, confirmedOverwrite: false, zoom: 1, draftId: dr ? dr.id : uri || 'new:' + Date.now() });
       if (mustSaveAs || (dr && dr.mustSaveAs)) doc.mustSaveAs = true;
       if (dr) { notice = '임시저장된 내용을 불러왔습니다. 아직 파일에는 저장되지 않았습니다.'; localStorage.setItem('activeDraft', dr.id); }
@@ -171,7 +172,7 @@ async function openFile(ref, opts = {}) {
 
 function showHome() {
   if (state.doc) { try { state.doc.destroy(); } catch {} }
-  state.doc = null; state.editing = false; state.dirty = false;
+  state.doc = null; state.editing = false; state.dirty = false; state.external = false;
   clearTimeout(draftTimer);
   localStorage.removeItem('activeDraft');
   closeFind();
@@ -390,7 +391,10 @@ async function onBack() {
     if (state.doc.back && state.doc.back()) return;
     if (!$('#find-bar').hidden) return closeFind();
     if (state.editing) return setEditing(false);
-    return closeDoc();
+    // 다른 앱에서 넘겨받아 연 문서는 닫으면 그 앱 화면으로 돌아간다
+    const external = state.external;
+    if ((await closeDoc()) && external) native.leaveApp();
+    return;
   }
   if (state.tab !== 'home') return setTab('home');
   if (await confirmDialog('앱을 종료하겠습니까?')) native.exitApp();
@@ -423,7 +427,7 @@ function about() {
     el('p', { text: '한글·HWP는 한글과컴퓨터의, Word·Excel·PowerPoint는 Microsoft의 상표입니다. 이 앱은 두 회사와 관계없는 독립 앱입니다.' }),
     el('h4', { text: '오픈소스' }),
     el('p', { class: 'small', text: 'rhwp (MIT) · docx-preview (Apache-2.0) · pptx-renderer (Apache-2.0) · PDF.js (Apache-2.0) · pdf-lib (MIT) · SheetJS (Apache-2.0) · JSZip (MIT) · PptxGenJS (MIT) · cfb (Apache-2.0)' }),
-    el('p', { class: 'small', text: '문서 편집기 1.3' })));
+    el('p', { class: 'small', text: '문서 편집기 1.4' })));
 }
 
 // ───────── 기본 앱 설정 ─────────
@@ -493,4 +497,4 @@ renderRecents();
 })();
 // 처음 실행할 때 기본 앱 설정을 안내한다
 if (native.isNative && !localStorage.getItem('defaultsAsked')) setTimeout(() => { if (!state.doc) defaultsSheet(); }, 600);
-native.onIncoming((ref, err) => { if (ref) openFile(ref); else alertDialog((err && err.message) || '파일을 읽지 못했습니다.', '문서를 열지 못했습니다'); });
+native.onIncoming((ref, err) => { if (ref) openFile(ref, { external: true }); else alertDialog((err && err.message) || '파일을 읽지 못했습니다.', '문서를 열지 못했습니다'); });

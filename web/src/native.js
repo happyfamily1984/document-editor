@@ -96,6 +96,8 @@ export function chooseDefault(ext) { if (isNative) N.chooseDefault(ext); }
 export function openAppSettings(pkg) { if (isNative) N.openAppSettings(pkg || ''); }
 export function onDefaultsChanged(handler) { window.__native.onDefaultsChanged = handler; }
 export function print(title) { if (isNative) N.print(title); else window.print(); }
+/** 앱을 끄지 않고 뒤로 보내 직전에 쓰던 앱 화면이 보이게 한다 */
+export function leaveApp() { if (isNative && N.leave) N.leave(); }
 export function exitApp() { if (isNative) N.exit(); }
 /** 다른 앱에서 "이 앱으로 열기"로 넘어온 파일 받기 */
 export function onIncoming(handler) { incomingHandler = handler; if (isNative) N.ready(); }

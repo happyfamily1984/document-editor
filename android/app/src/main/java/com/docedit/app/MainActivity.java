@@ -405,6 +405,12 @@ public class MainActivity extends Activity {
             });
         }
 
+        /** 다른 앱에서 넘겨받은 문서를 닫았을 때: 이 앱을 뒤로 보내 그 앱 화면으로 돌아간다 */
+        @JavascriptInterface
+        public void leave() {
+            runOnUiThread(() -> moveTaskToBack(true));
+        }
+
         @JavascriptInterface
         public void exit() {
             runOnUiThread(MainActivity.this::finishAndRemoveTask);
