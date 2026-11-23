@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 글꼴을 받을 때만 인터넷을 쓴다 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- 형식별 기본 앱이 무엇인지 알아보기 위해 필요 -->
     <queries>
         <intent>

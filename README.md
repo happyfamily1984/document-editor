@@ -13,6 +13,8 @@
   - HWP/HWPX: 문단·표 칸 글 수정
   - PDF: 글 넣기, 쪽 돌리기, 쪽 지우기
   - DOC/PPT(옛 형식): 글만 가져와 DOCX로 저장
+- **한글 무료 글꼴**: 앱에 61종(나눔·마루부리·배민·Noto·Pretendard 등)을 넣었고, 손글씨 등 139종은 앱 안에서 받아 씁니다.
+  워드·한글·파워포인트·PDF·메모에서 글꼴과 크기를 고를 수 있고, 문서에 쓰인 상용 글꼴(맑은 고딕·함초롬바탕 등)은 비슷한 무료 글꼴로 보여 줍니다.
 - 새 문서 만들기, 최근/중요 문서, 찾기, 확대·축소, 공유, 인쇄(PDF로 내보내기)
 - 다른 앱에서 "이 앱으로 열기"/"공유"로 파일 받기
 - 처음 실행할 때(이후에는 홈의 [기본 앱]) 문서 형식별로 이 앱을 기본 앱으로 설정
@@ -24,7 +26,9 @@
 
 ## 빌드
 ```bash
-cd web && npm install && npm run build
+cd web && npm install
+python3 scripts/build-fonts.py   # 글꼴 모으기(처음 한 번, 인터넷·fonttools·brotli 필요)
+npm run build
 cd ../android && gradle assembleRelease   # Android SDK(플랫폼 35) 필요
 # 결과: android/app/build/outputs/apk/release/app-release.apk
 ```

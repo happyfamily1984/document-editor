@@ -1,0 +1,401 @@
+/* scripts/build-fonts.py 가 만든 파일 — 직접 고치지 마세요 */
+@font-face { font-family: '나눔고딕'; src: local('나눔고딕'), local('NanumGothic'), local('Nanum Gothic'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔고딕'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumGothic'; src: local('NanumGothic'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumGothic'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Nanum Gothic'; src: local('Nanum Gothic'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Nanum Gothic'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔바른고딕'; src: local('나눔바른고딕'), local('NanumBarunGothic'), local('Nanum Barun Gothic'), url('./nanumbarungothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔바른고딕'; src: url('./nanumbarungothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumBarunGothic'; src: local('NanumBarunGothic'), url('./nanumbarungothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumBarunGothic'; src: url('./nanumbarungothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Nanum Barun Gothic'; src: local('Nanum Barun Gothic'), url('./nanumbarungothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Nanum Barun Gothic'; src: url('./nanumbarungothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔스퀘어'; src: local('나눔스퀘어'), local('NanumSquare'), url('./nanumsquare-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔스퀘어'; src: url('./nanumsquare-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumSquare'; src: local('NanumSquare'), url('./nanumsquare-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumSquare'; src: url('./nanumsquare-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔스퀘어라운드'; src: local('나눔스퀘어라운드'), local('NanumSquareRound'), url('./nanumsquareround-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔스퀘어라운드'; src: url('./nanumsquareround-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumSquareRound'; src: local('NanumSquareRound'), url('./nanumsquareround-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumSquareRound'; src: url('./nanumsquareround-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔스퀘어 ac'; src: local('나눔스퀘어 ac'), local('NanumSquare_ac'), local('NanumSquareAc'), url('./nanumsquareac-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔스퀘어 ac'; src: url('./nanumsquareac-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumSquare_ac'; src: local('NanumSquare_ac'), url('./nanumsquareac-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumSquare_ac'; src: url('./nanumsquareac-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumSquareAc'; src: local('NanumSquareAc'), url('./nanumsquareac-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumSquareAc'; src: url('./nanumsquareac-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Noto Sans KR'; src: local('Noto Sans KR'), local('본고딕'), local('Source Han Sans KR'), local('Noto Sans CJK KR'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Noto Sans KR'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '본고딕'; src: local('본고딕'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '본고딕'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Source Han Sans KR'; src: local('Source Han Sans KR'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Source Han Sans KR'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Noto Sans CJK KR'; src: local('Noto Sans CJK KR'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Noto Sans CJK KR'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: local('Pretendard'), local('프리텐다드'), url('./pretendard-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('./pretendard-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '프리텐다드'; src: local('프리텐다드'), url('./pretendard-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '프리텐다드'; src: url('./pretendard-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'SUIT'; src: local('SUIT'), local('수트'), url('./suit-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'SUIT'; src: url('./suit-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '수트'; src: local('수트'), url('./suit-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '수트'; src: url('./suit-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Wanted Sans'; src: local('Wanted Sans'), local('원티드 산스'), url('./wantedsans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Wanted Sans'; src: url('./wantedsans-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '원티드 산스'; src: local('원티드 산스'), url('./wantedsans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '원티드 산스'; src: url('./wantedsans-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '고운돋움'; src: local('고운돋움'), local('Gowun Dodum'), url('./gowundodum-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '고운돋움'; src: url('./gowundodum-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Gowun Dodum'; src: local('Gowun Dodum'), url('./gowundodum-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gowun Dodum'; src: url('./gowundodum-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Gothic A1'; src: local('Gothic A1'), local('고딕 A1'), url('./gothica1-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gothic A1'; src: url('./gothica1-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '고딕 A1'; src: local('고딕 A1'), url('./gothica1-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '고딕 A1'; src: url('./gothica1-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans KR'; src: local('IBM Plex Sans KR'), url('./ibmplexsanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans KR'; src: url('./ibmplexsanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'LINE Seed Sans KR'; src: local('LINE Seed Sans KR'), local('LINESeedKR'), local('라인 시드'), url('./lineseed-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'LINE Seed Sans KR'; src: url('./lineseed-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'LINESeedKR'; src: local('LINESeedKR'), url('./lineseed-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'LINESeedKR'; src: url('./lineseed-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '라인 시드'; src: local('라인 시드'), url('./lineseed-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '라인 시드'; src: url('./lineseed-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '학교안심 바른돋움'; src: local('학교안심 바른돋움'), url('./hgbareondotum-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '학교안심 바른돋움'; src: url('./hgbareondotum-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '학교안심 산뜻돋움'; src: local('학교안심 산뜻돋움'), url('./hgsantteutdotum-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '학교안심 산뜻돋움'; src: url('./hgsantteutdotum-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔명조'; src: local('나눔명조'), local('NanumMyeongjo'), local('Nanum Myeongjo'), url('./nanummyeongjo-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔명조'; src: url('./nanummyeongjo-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumMyeongjo'; src: local('NanumMyeongjo'), url('./nanummyeongjo-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumMyeongjo'; src: url('./nanummyeongjo-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Nanum Myeongjo'; src: local('Nanum Myeongjo'), url('./nanummyeongjo-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Nanum Myeongjo'; src: url('./nanummyeongjo-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '마루 부리'; src: local('마루 부리'), local('MaruBuri'), local('마루부리'), url('./maruburi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '마루 부리'; src: url('./maruburi-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'MaruBuri'; src: local('MaruBuri'), url('./maruburi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'MaruBuri'; src: url('./maruburi-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '마루부리'; src: local('마루부리'), url('./maruburi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '마루부리'; src: url('./maruburi-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Noto Serif KR'; src: local('Noto Serif KR'), local('본명조'), local('Source Han Serif K'), local('Noto Serif CJK KR'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Noto Serif KR'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '본명조'; src: local('본명조'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '본명조'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Source Han Serif K'; src: local('Source Han Serif K'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Source Han Serif K'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Noto Serif CJK KR'; src: local('Noto Serif CJK KR'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Noto Serif CJK KR'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '고운바탕'; src: local('고운바탕'), local('Gowun Batang'), url('./gowunbatang-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '고운바탕'; src: url('./gowunbatang-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Gowun Batang'; src: local('Gowun Batang'), url('./gowunbatang-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gowun Batang'; src: url('./gowunbatang-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '함렛'; src: local('함렛'), local('Hahmlet'), url('./hahmlet-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '함렛'; src: url('./hahmlet-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Hahmlet'; src: local('Hahmlet'), url('./hahmlet-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Hahmlet'; src: url('./hahmlet-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '리디바탕'; src: local('리디바탕'), local('RIDIBatang'), url('./ridibatang-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '리디바탕'; src: url('./ridibatang-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'RIDIBatang'; src: local('RIDIBatang'), url('./ridibatang-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'RIDIBatang'; src: url('./ridibatang-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '학교안심 바른바탕'; src: local('학교안심 바른바탕'), url('./hgbareonbatang-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '학교안심 바른바탕'; src: url('./hgbareonbatang-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '학교안심 산뜻바탕'; src: local('학교안심 산뜻바탕'), url('./hgsantteutbatang-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '학교안심 산뜻바탕'; src: url('./hgsantteutbatang-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'KCC-한빛'; src: local('KCC-한빛'), url('./kcchanbit-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'KCC-한빛'; src: url('./kcchanbit-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '송명'; src: local('송명'), local('Song Myung'), url('./songmyung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '송명'; src: url('./songmyung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Song Myung'; src: local('Song Myung'), url('./songmyung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Song Myung'; src: url('./songmyung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔손글씨 펜'; src: local('나눔손글씨 펜'), local('Nanum Pen Script'), local('NanumPen'), url('./nanumpen-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔손글씨 펜'; src: url('./nanumpen-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Nanum Pen Script'; src: local('Nanum Pen Script'), url('./nanumpen-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Nanum Pen Script'; src: url('./nanumpen-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumPen'; src: local('NanumPen'), url('./nanumpen-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumPen'; src: url('./nanumpen-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔손글씨 붓'; src: local('나눔손글씨 붓'), local('Nanum Brush Script'), local('NanumBrush'), url('./nanumbrush-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔손글씨 붓'; src: url('./nanumbrush-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Nanum Brush Script'; src: local('Nanum Brush Script'), url('./nanumbrush-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Nanum Brush Script'; src: url('./nanumbrush-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumBrush'; src: local('NanumBrush'), url('./nanumbrush-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumBrush'; src: url('./nanumbrush-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔바른펜'; src: local('나눔바른펜'), local('NanumBarunpen'), url('./nanumbarunpen-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔바른펜'; src: url('./nanumbarunpen-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumBarunpen'; src: local('NanumBarunpen'), url('./nanumbarunpen-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumBarunpen'; src: url('./nanumbarunpen-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔손글씨 또박또박'; src: local('나눔손글씨 또박또박'), url('./ttobagttobag-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔손글씨 또박또박'; src: url('./ttobagttobag-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '개구'; src: local('개구'), local('Gaegu'), url('./gaegu-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '개구'; src: url('./gaegu-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Gaegu'; src: local('Gaegu'), url('./gaegu-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gaegu'; src: url('./gaegu-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '하이멜로디'; src: local('하이멜로디'), local('Hi Melody'), url('./himelody-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '하이멜로디'; src: url('./himelody-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Hi Melody'; src: local('Hi Melody'), url('./himelody-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Hi Melody'; src: url('./himelody-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '감자꽃'; src: local('감자꽃'), local('Gamja Flower'), url('./gamjaflower-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '감자꽃'; src: url('./gamjaflower-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Gamja Flower'; src: local('Gamja Flower'), url('./gamjaflower-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gamja Flower'; src: url('./gamjaflower-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '서툰 이야기'; src: local('서툰 이야기'), local('Poor Story'), url('./poorstory-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '서툰 이야기'; src: url('./poorstory-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Poor Story'; src: local('Poor Story'), url('./poorstory-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Poor Story'; src: url('./poorstory-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '싱글데이'; src: local('싱글데이'), local('Single Day'), url('./singleday-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '싱글데이'; src: url('./singleday-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Single Day'; src: local('Single Day'), url('./singleday-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Single Day'; src: url('./singleday-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '귀여운 글꼴'; src: local('귀여운 글꼴'), local('Cute Font'), url('./cutefont-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '귀여운 글꼴'; src: url('./cutefont-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Cute Font'; src: local('Cute Font'), url('./cutefont-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Cute Font'; src: url('./cutefont-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '독도'; src: local('독도'), local('Dokdo'), url('./dokdo-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '독도'; src: url('./dokdo-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Dokdo'; src: local('Dokdo'), url('./dokdo-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Dokdo'; src: url('./dokdo-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '동해 독도'; src: local('동해 독도'), local('East Sea Dokdo'), url('./eastseadokdo-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '동해 독도'; src: url('./eastseadokdo-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'East Sea Dokdo'; src: local('East Sea Dokdo'), url('./eastseadokdo-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'East Sea Dokdo'; src: url('./eastseadokdo-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '배민 주아'; src: local('배민 주아'), local('BM JUA'), local('Jua'), local('주아'), url('./bmjua-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '배민 주아'; src: url('./bmjua-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'BM JUA'; src: local('BM JUA'), url('./bmjua-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'BM JUA'; src: url('./bmjua-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Jua'; src: local('Jua'), url('./bmjua-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Jua'; src: url('./bmjua-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '주아'; src: local('주아'), url('./bmjua-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '주아'; src: url('./bmjua-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '배민 도현'; src: local('배민 도현'), local('BM DoHyeon'), local('Do Hyeon'), local('도현'), url('./bmdohyeon-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '배민 도현'; src: url('./bmdohyeon-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'BM DoHyeon'; src: local('BM DoHyeon'), url('./bmdohyeon-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'BM DoHyeon'; src: url('./bmdohyeon-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Do Hyeon'; src: local('Do Hyeon'), url('./bmdohyeon-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Do Hyeon'; src: url('./bmdohyeon-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '도현'; src: local('도현'), url('./bmdohyeon-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '도현'; src: url('./bmdohyeon-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '배민 한나 Pro'; src: local('배민 한나 Pro'), local('BM HANNA Pro'), url('./bmhannapro-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '배민 한나 Pro'; src: url('./bmhannapro-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'BM HANNA Pro'; src: local('BM HANNA Pro'), url('./bmhannapro-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'BM HANNA Pro'; src: url('./bmhannapro-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '배민 한나는 열한살'; src: local('배민 한나는 열한살'), local('BM HANNA 11yrs old'), url('./bmhanna11-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '배민 한나는 열한살'; src: url('./bmhanna11-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'BM HANNA 11yrs old'; src: local('BM HANNA 11yrs old'), url('./bmhanna11-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'BM HANNA 11yrs old'; src: url('./bmhanna11-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '배민 한나 Air'; src: local('배민 한나 Air'), local('BM HANNA Air'), url('./bmhannaair-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '배민 한나 Air'; src: url('./bmhannaair-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'BM HANNA Air'; src: local('BM HANNA Air'), url('./bmhannaair-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'BM HANNA Air'; src: url('./bmhannaair-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '배민 연성'; src: local('배민 연성'), local('BM YEONSUNG'), local('Yeon Sung'), local('연성'), url('./bmyeonsung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '배민 연성'; src: url('./bmyeonsung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'BM YEONSUNG'; src: local('BM YEONSUNG'), url('./bmyeonsung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'BM YEONSUNG'; src: url('./bmyeonsung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Yeon Sung'; src: local('Yeon Sung'), url('./bmyeonsung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Yeon Sung'; src: url('./bmyeonsung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '연성'; src: local('연성'), url('./bmyeonsung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '연성'; src: url('./bmyeonsung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '배민 을지로'; src: local('배민 을지로'), local('BM EULJIRO'), url('./bmeuljiro-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '배민 을지로'; src: url('./bmeuljiro-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'BM EULJIRO'; src: local('BM EULJIRO'), url('./bmeuljiro-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'BM EULJIRO'; src: url('./bmeuljiro-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '배민 을지로10년후'; src: local('배민 을지로10년후'), local('BM EULJIRO 10yearslater'), url('./bmeuljiro10-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '배민 을지로10년후'; src: url('./bmeuljiro10-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'BM EULJIRO 10yearslater'; src: local('BM EULJIRO 10yearslater'), url('./bmeuljiro10-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'BM EULJIRO 10yearslater'; src: url('./bmeuljiro10-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '기랑해랑'; src: local('기랑해랑'), local('Kirang Haerang'), url('./kiranghaerang-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '기랑해랑'; src: url('./kiranghaerang-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Kirang Haerang'; src: local('Kirang Haerang'), url('./kiranghaerang-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Kirang Haerang'; src: url('./kiranghaerang-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '검은고딕'; src: local('검은고딕'), local('Black Han Sans'), url('./blackhansans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '검은고딕'; src: url('./blackhansans-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Black Han Sans'; src: local('Black Han Sans'), url('./blackhansans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Black Han Sans'; src: url('./blackhansans-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '구기'; src: local('구기'), local('Gugi'), url('./gugi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '구기'; src: url('./gugi-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Gugi'; src: local('Gugi'), url('./gugi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gugi'; src: url('./gugi-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '스타일리시'; src: local('스타일리시'), local('Stylish'), url('./stylish-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '스타일리시'; src: url('./stylish-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Stylish'; src: local('Stylish'), url('./stylish-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Stylish'; src: url('./stylish-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '해바라기'; src: local('해바라기'), local('Sunflower'), url('./sunflower-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '해바라기'; src: url('./sunflower-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Sunflower'; src: local('Sunflower'), url('./sunflower-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Sunflower'; src: url('./sunflower-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '동글'; src: local('동글'), local('Dongle'), url('./dongle-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '동글'; src: url('./dongle-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Dongle'; src: local('Dongle'), url('./dongle-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Dongle'; src: url('./dongle-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '오르빛'; src: local('오르빛'), local('Orbit'), url('./orbit-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '오르빛'; src: url('./orbit-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Orbit'; src: local('Orbit'), url('./orbit-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Orbit'; src: url('./orbit-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '산하엽'; src: local('산하엽'), local('Diphylleia'), url('./diphylleia-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '산하엽'; src: url('./diphylleia-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Diphylleia'; src: local('Diphylleia'), url('./diphylleia-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Diphylleia'; src: url('./diphylleia-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '가석'; src: local('가석'), local('Gasoek One'), url('./gasoek-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '가석'; src: url('./gasoek-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Gasoek One'; src: local('Gasoek One'), url('./gasoek-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gasoek One'; src: url('./gasoek-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '모이라이'; src: local('모이라이'), local('Moirai One'), url('./moirai-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '모이라이'; src: url('./moirai-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Moirai One'; src: local('Moirai One'), url('./moirai-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Moirai One'; src: url('./moirai-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '능소화'; src: local('능소화'), local('Grandiflora One'), url('./grandiflora-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '능소화'; src: url('./grandiflora-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Grandiflora One'; src: local('Grandiflora One'), url('./grandiflora-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Grandiflora One'; src: url('./grandiflora-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '베이글'; src: local('베이글'), local('Bagel Fat One'), url('./bagelfat-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '베이글'; src: url('./bagelfat-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Bagel Fat One'; src: local('Bagel Fat One'), url('./bagelfat-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Bagel Fat One'; src: url('./bagelfat-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '흑백사진'; src: local('흑백사진'), local('Black And White Picture'), url('./bwpicture-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '흑백사진'; src: url('./bwpicture-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Black And White Picture'; src: local('Black And White Picture'), url('./bwpicture-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Black And White Picture'; src: url('./bwpicture-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Neo둥근모'; src: local('Neo둥근모'), local('NeoDunggeunmo'), url('./neodgm-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Neo둥근모'; src: url('./neodgm-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NeoDunggeunmo'; src: local('NeoDunggeunmo'), url('./neodgm-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NeoDunggeunmo'; src: url('./neodgm-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'D2Coding'; src: local('D2Coding'), local('D2 Coding'), url('./d2coding-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'D2Coding'; src: url('./d2coding-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'D2 Coding'; src: local('D2 Coding'), url('./d2coding-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'D2 Coding'; src: url('./d2coding-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔고딕코딩'; src: local('나눔고딕코딩'), local('NanumGothicCoding'), local('Nanum Gothic Coding'), url('./nanumgothiccoding-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔고딕코딩'; src: url('./nanumgothiccoding-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'NanumGothicCoding'; src: local('NanumGothicCoding'), url('./nanumgothiccoding-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NanumGothicCoding'; src: url('./nanumgothiccoding-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Nanum Gothic Coding'; src: local('Nanum Gothic Coding'), url('./nanumgothiccoding-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Nanum Gothic Coding'; src: url('./nanumgothiccoding-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '맑은 고딕'; src: local('맑은 고딕'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '맑은 고딕'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Malgun Gothic'; src: local('Malgun Gothic'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Malgun Gothic'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '한컴 고딕'; src: local('한컴 고딕'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '한컴 고딕'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Hancom Gothic'; src: local('Hancom Gothic'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Hancom Gothic'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '애플 SD 산돌고딕 Neo'; src: local('애플 SD 산돌고딕 Neo'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '애플 SD 산돌고딕 Neo'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Apple SD Gothic Neo'; src: local('Apple SD Gothic Neo'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Apple SD Gothic Neo'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '본고딕'; src: local('본고딕'), url('./notosanskr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '본고딕'; src: url('./notosanskr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '굴림'; src: local('굴림'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '굴림'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Gulim'; src: local('Gulim'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gulim'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '굴림체'; src: local('굴림체'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '굴림체'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'GulimChe'; src: local('GulimChe'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'GulimChe'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '새굴림'; src: local('새굴림'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '새굴림'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'New Gulim'; src: local('New Gulim'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'New Gulim'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '돋움'; src: local('돋움'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '돋움'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Dotum'; src: local('Dotum'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Dotum'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '돋움체'; src: local('돋움체'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '돋움체'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'DotumChe'; src: local('DotumChe'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'DotumChe'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '한컴돋움'; src: local('한컴돋움'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '한컴돋움'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Haansoft Dotum'; src: local('Haansoft Dotum'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Haansoft Dotum'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '함초롬돋움'; src: local('함초롬돋움'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '함초롬돋움'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HCR Dotum'; src: local('HCR Dotum'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HCR Dotum'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HY중고딕'; src: local('HY중고딕'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HY중고딕'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HYGothic-Medium'; src: local('HYGothic-Medium'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HYGothic-Medium'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '휴먼고딕'; src: local('휴먼고딕'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '휴먼고딕'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '중고딕'; src: local('중고딕'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '중고딕'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '고딕'; src: local('고딕'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '고딕'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '나눔고딕 ExtraBold'; src: local('나눔고딕 ExtraBold'), url('./nanumgothic-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '나눔고딕 ExtraBold'; src: url('./nanumgothic-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '바탕'; src: local('바탕'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '바탕'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Batang'; src: local('Batang'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Batang'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '바탕체'; src: local('바탕체'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '바탕체'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'BatangChe'; src: local('BatangChe'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'BatangChe'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '한컴바탕'; src: local('한컴바탕'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '한컴바탕'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Haansoft Batang'; src: local('Haansoft Batang'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Haansoft Batang'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '함초롬바탕'; src: local('함초롬바탕'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '함초롬바탕'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HCR Batang'; src: local('HCR Batang'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HCR Batang'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '신명조'; src: local('신명조'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '신명조'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HY신명조'; src: local('HY신명조'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HY신명조'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HYSinMyeongJo-Medium'; src: local('HYSinMyeongJo-Medium'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HYSinMyeongJo-Medium'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '휴먼명조'; src: local('휴먼명조'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '휴먼명조'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '명조'; src: local('명조'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '명조'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '견명조'; src: local('견명조'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '견명조'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HY견명조'; src: local('HY견명조'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HY견명조'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HYGyeonMyeongJo'; src: local('HYGyeonMyeongJo'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HYGyeonMyeongJo'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '한양신명조'; src: local('한양신명조'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '한양신명조'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '문체부 바탕체'; src: local('문체부 바탕체'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '문체부 바탕체'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'AppleMyungjo'; src: local('AppleMyungjo'), url('./notoserifkr-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'AppleMyungjo'; src: url('./notoserifkr-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '궁서'; src: local('궁서'), url('./songmyung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '궁서'; src: url('./songmyung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Gungsuh'; src: local('Gungsuh'), url('./songmyung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gungsuh'; src: url('./songmyung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '궁서체'; src: local('궁서체'), url('./songmyung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '궁서체'; src: url('./songmyung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'GungsuhChe'; src: local('GungsuhChe'), url('./songmyung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'GungsuhChe'; src: url('./songmyung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HY궁서'; src: local('HY궁서'), url('./songmyung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HY궁서'; src: url('./songmyung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '휴먼옛체'; src: local('휴먼옛체'), url('./songmyung-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '휴먼옛체'; src: url('./songmyung-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HY헤드라인M'; src: local('HY헤드라인M'), url('./blackhansans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HY헤드라인M'; src: url('./blackhansans-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HYHeadLine-Medium'; src: local('HYHeadLine-Medium'), url('./blackhansans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HYHeadLine-Medium'; src: url('./blackhansans-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HY견고딕'; src: local('HY견고딕'), url('./blackhansans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HY견고딕'; src: url('./blackhansans-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HYGothic-Extra'; src: local('HYGothic-Extra'), url('./blackhansans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HYGothic-Extra'; src: url('./blackhansans-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '견고딕'; src: local('견고딕'), url('./blackhansans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '견고딕'; src: url('./blackhansans-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '휴먼둥근헤드라인'; src: local('휴먼둥근헤드라인'), url('./blackhansans-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '휴먼둥근헤드라인'; src: url('./blackhansans-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HY둥근고딕'; src: local('HY둥근고딕'), url('./nanumsquareround-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HY둥근고딕'; src: url('./nanumsquareround-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HY얕은샘물M'; src: local('HY얕은샘물M'), url('./nanumsquareround-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HY얕은샘물M'; src: url('./nanumsquareround-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '휴먼둥근고딕'; src: local('휴먼둥근고딕'), url('./nanumsquareround-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '휴먼둥근고딕'; src: url('./nanumsquareround-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'HY엽서M'; src: local('HY엽서M'), url('./nanumpen-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HY엽서M'; src: url('./nanumpen-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: '휴먼편지체'; src: local('휴먼편지체'), url('./nanumpen-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: '휴먼편지체'; src: url('./nanumpen-400.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Consolas'; src: local('Consolas'), url('./d2coding-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Consolas'; src: url('./d2coding-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Courier New'; src: local('Courier New'), url('./d2coding-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Courier New'; src: url('./d2coding-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Courier'; src: local('Courier'), url('./d2coding-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Courier'; src: url('./d2coding-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }

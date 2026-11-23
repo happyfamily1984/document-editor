@@ -165,3 +165,24 @@ dl.info { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin:
 .default-row small { color: var(--sub); font-size: 12px; } .default-row small.ok { color: var(--xlsx); }
 .default-row button { min-height: 36px; padding: 4px 14px; }
 .default-row .done { color: var(--xlsx); font-size: 20px; font-weight: 700; padding: 0 14px; }
+
+/* 글꼴 고르기 */
+.font-picker .font-search { width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--bg); }
+.font-cats { display: flex; gap: 6px; overflow-x: auto; padding: 10px 0 6px; }
+.font-cats button { flex: none; min-height: 34px; padding: 4px 12px; border-radius: 17px; font-size: 13px; }
+.font-cats button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.font-list { min-height: 50vh; }
+.font-row { display: flex; align-items: center; gap: 10px; padding: 10px 2px; border-bottom: 1px solid var(--line); }
+.font-row.pickable { cursor: pointer; } .font-row.pickable:active { background: #f1f5ff; }
+.font-names { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.font-names strong { font-size: 18px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.font-names small { color: var(--sub); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.font-row button { min-height: 34px; padding: 4px 14px; flex: none; }
+.font-row .done { color: var(--accent); font-weight: 700; font-size: 20px; padding: 0 8px; }
+.font-sep { margin: 16px 0 4px; color: var(--sub); font-size: 12.5px; }
+.size-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.chip-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 2px 0 8px; }
+.chip-row .hint { margin: 0; }
+button.chip { min-height: 34px; padding: 4px 12px; border-radius: 17px; font-size: 13px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+button.chip.on { border-color: var(--accent); color: var(--accent); background: #eef4ff; }
+.block-edit { margin-bottom: 6px; }

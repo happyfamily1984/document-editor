@@ -3,6 +3,7 @@ import JSZip from 'jszip';
 import { renderAsync } from 'docx-preview';
 import { W, segments, paraText, setParaText, serializeXml, parseXml } from './ooxml-text.js';
 import { toast, xmlEscape } from '../ui.js';
+import { pickFont, pickSize, ensureFonts } from '../fonts.js';
 
 const WNS = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main';
 const FLOW = new Set(['body', 'tbl', 'tr', 'tc', 'sdt', 'sdtContent', 'ins', 'smartTag', 'customXml']);
@@ -110,6 +111,48 @@ function toggleFormat(p, a, b, prop) {
     }
   }
   return on;
+}
+
+/** [a,b) 범위의 글자 조각(run)들. 경계에서 run을 나눈다 */
+function runsIn(p, a, b) {
+  splitRunAt(p, a); splitRunAt(p, b);
+  const runs = new Set();
+  let pos = 0;
+  for (const s of segments(p, W)) {
+    const end = pos + s.text.length;
+    if (pos >= a && end <= b && end > pos) runs.add(topRun(s.node));
+    pos = end;
+  }
+  runs.delete(null);
+  return [...runs];
+}
+const RPR_AFTER_SZ = ['highlight', 'u', 'effect', 'bdr', 'shd', 'fitText', 'vertAlign', 'rtl', 'cs', 'em', 'lang', 'eastAsianLayout', 'specVanish', 'oMath'];
+/** 글꼴 바꾸기: 영문·한글·기타 글자 모두 같은 글꼴로 */
+function setRunFont(p, a, b, name) {
+  for (const r of runsIn(p, a, b)) {
+    const rPr = ensureChild(r, 'rPr', true);
+    let f = [...rPr.children].find((c) => c.localName === 'rFonts');
+    if (!f) {
+      f = r.ownerDocument.createElementNS(WNS, 'w:rFonts');
+      const style = [...rPr.children].find((c) => c.localName === 'rStyle');
+      if (style) style.after(f); else rPr.prepend(f);
+    }
+    for (const at of ['asciiTheme', 'hAnsiTheme', 'eastAsiaTheme', 'cstheme']) f.removeAttributeNS(WNS, at);
+    for (const at of ['ascii', 'hAnsi', 'eastAsia', 'cs']) wAttr(f, at, name);
+  }
+}
+/** 글자 크기 바꾸기(pt) */
+function setRunSize(p, a, b, pt) {
+  for (const r of runsIn(p, a, b)) {
+    const rPr = ensureChild(r, 'rPr', true);
+    [...rPr.children].filter((c) => c.localName === 'sz' || c.localName === 'szCs').forEach((c) => c.remove());
+    const after = [...rPr.children].find((c) => RPR_AFTER_SZ.includes(c.localName));
+    for (const n of ['sz', 'szCs']) {
+      const e = r.ownerDocument.createElementNS(WNS, 'w:' + n);
+      wAttr(e, 'val', String(Math.round(pt * 2)));
+      if (after) rPr.insertBefore(e, after); else rPr.append(e);
+    }
+  }
 }
 
 export function buildDocx(lines) {
@@ -251,6 +294,37 @@ export async function open({ bytes, body, ctx }) {
     if (state !== on) document.execCommand(cmd);
     ctx.changed();
   }
+  /** 글꼴·크기: 고르는 창이 열리면 선택이 풀리므로 범위를 기억해 두었다가 되살린다 */
+  async function runStyle(kind) {
+    const dp = current;
+    const xp = dp && pairs.get(dp);
+    if (!xp || !document.contains(dp)) return toast('먼저 고칠 문단을 눌러 주세요.');
+    sync(dp);
+    let [a, b] = caretOffset(dp);
+    const sel = getSelection();
+    let range = sel.rangeCount && dp.contains(sel.anchorNode) ? sel.getRangeAt(0).cloneRange() : null;
+    if (a === b || !range) { a = 0; b = dp.textContent.length; range = document.createRange(); range.selectNodeContents(dp); }
+    if (a === b) return toast('글자가 없는 문단입니다.');
+    const anchor = range.startContainer.nodeType === 1 ? range.startContainer : range.startContainer.parentElement;
+    const cs = getComputedStyle(anchor);
+    const value = kind === 'font'
+      ? await pickFont({ current: cs.fontFamily.split(',')[0].replace(/["']/g, '').trim() })
+      : await pickSize(Math.round(parseFloat(cs.fontSize) * 0.75 * 2) / 2);
+    if (value == null) return;
+    if (paraText(xp, W) !== dp.textContent) { a = 0; b = paraText(xp, W).length; range = document.createRange(); range.selectNodeContents(dp); }
+    if (kind === 'font') { await ensureFonts([value]); setRunFont(xp, a, b, value); } else setRunSize(xp, a, b, value);
+    // 화면에도 같은 서식을 입힌다
+    dp.focus();
+    sel.removeAllRanges(); sel.addRange(range);
+    document.execCommand('styleWithCSS', false, true);
+    if (kind === 'font') document.execCommand('fontName', false, value);
+    else {
+      document.execCommand('fontSize', false, '7');
+      dp.querySelectorAll('[style*="xxx-large"], font[size="7"]').forEach((e) => { e.style.fontSize = value + 'pt'; e.removeAttribute('size'); });
+    }
+    ctx.changed();
+  }
+
   function align(val, css) {
     const dp = current;
     const xp = dp && pairs.get(dp);
@@ -277,6 +351,8 @@ export async function open({ bytes, body, ctx }) {
       if (!on) { document.activeElement && document.activeElement.blur(); current = null; }
     },
     tools: () => [
+      { label: '글꼴', icon: '가', editOnly: true, run: () => runStyle('font') },
+      { label: '크기', icon: '¹²', editOnly: true, run: () => runStyle('size') },
       { label: '굵게', icon: 'B', editOnly: true, run: () => format('b', 'bold') },
       { label: '기울임', icon: 'I', editOnly: true, run: () => format('i', 'italic') },
       { label: '밑줄', icon: 'U', editOnly: true, run: () => format('u', 'underline') },

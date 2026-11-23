@@ -4,11 +4,39 @@ import { PptxViewer, RECOMMENDED_ZIP_LIMITS } from '@aiden0z/pptx-renderer';
 import PptxGenJS from 'pptxgenjs';
 import { A, paraText, setParaText, serializeXml, parseXml } from './ooxml-text.js';
 import { el, sheet, toast, busy, confirmDialog } from '../ui.js';
+import { pickFont, pickSize, ensureFonts } from '../fonts.js';
 
 const ANS = 'http://schemas.openxmlformats.org/drawingml/2006/main';
 const PNS = 'http://schemas.openxmlformats.org/presentationml/2006/main';
 const RNS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships';
 const REL_SLIDE = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide';
+
+// a:rPr 안 자식 순서: ln, 채우기, 효과, highlight, 밑줄…, latin, ea, cs, sym, hlinkClick…
+const AFTER_FONT = ['cs', 'sym', 'hlinkClick', 'hlinkMouseOver', 'rtl', 'extLst'];
+/** 글상자(문단들)의 모든 글자 서식에 글꼴·크기를 건다 */
+function styleBlock(ps, font, size) {
+  for (const p of ps) {
+    for (const r of [...p.children].filter((c) => c.localName === 'r' || c.localName === 'fld')) {
+      if (![...r.children].some((c) => c.localName === 'rPr')) r.prepend(r.ownerDocument.createElementNS(ANS, 'a:rPr'));
+    }
+    const rprs = [...p.getElementsByTagNameNS(ANS, 'rPr'), ...p.getElementsByTagNameNS(ANS, 'endParaRPr')];
+    for (const rPr of rprs) {
+      if (size) rPr.setAttribute('sz', String(Math.round(size * 100)));
+      if (!font) continue;
+      for (const tag of ['latin', 'ea']) {
+        let e = [...rPr.children].find((c) => c.localName === tag);
+        if (!e) {
+          e = rPr.ownerDocument.createElementNS(ANS, 'a:' + tag);
+          const after = [...rPr.children].find((c) => (tag === 'latin' ? ['ea', ...AFTER_FONT] : AFTER_FONT).includes(c.localName));
+          if (after) rPr.insertBefore(e, after); else rPr.append(e);
+        }
+        e.setAttribute('typeface', font);
+      }
+    }
+  }
+}
+const blockFont = (ps) => { for (const p of ps) for (const t of ['ea', 'latin']) { const e = p.getElementsByTagNameNS(ANS, t)[0]; if (e && !e.getAttribute('typeface').startsWith('+')) return e.getAttribute('typeface'); } return ''; };
+const blockSize = (ps) => { for (const p of ps) { const r = p.getElementsByTagNameNS(ANS, 'rPr')[0]; if (r && r.getAttribute('sz')) return Number(r.getAttribute('sz')) / 100; } return 18; };
 
 export async function blankPptx() {
   const p = new PptxGenJS();
@@ -82,18 +110,38 @@ export async function open({ bytes, body, scroll, ctx }) {
     const path = paths[index];
     const xml = parseXml(await zip.file(path).async('string'));
     const blocks = textBlocks(xml);
-    const areas = [];
+    const areas = [], styles = [];
     const result = await sheet(`${index + 1}번 슬라이드`, (done) =>
       el('div', { class: 'slide-edit' },
         blocks.length ? el('p', { class: 'hint', text: '글 상자마다 한 칸입니다. 줄을 바꾸면 문단이 나뉩니다.' }) : el('p', { class: 'hint', text: '이 슬라이드에는 고칠 글이 없습니다.' }),
-        blocks.map((ps) => { const t = el('textarea', { rows: Math.min(Math.max(ps.length, 1) + 1, 6) }); t.value = ps.map((p) => paraText(p, A)).join('\n'); areas.push(t); return t; }),
+        blocks.map((ps, bi) => {
+          const t = el('textarea', { rows: Math.min(Math.max(ps.length, 1) + 1, 6) });
+          t.value = ps.map((p) => paraText(p, A)).join('\n'); areas.push(t);
+          const st = { font: null, size: null }; styles.push(st);
+          const f0 = blockFont(ps), s0 = blockSize(ps);
+          if (f0) t.style.fontFamily = `"${f0}"`;
+          const fBtn = el('button', { class: 'chip', text: '글꼴: ' + (f0 || '기본'), onclick: async () => {
+            const v = await pickFont({ current: st.font || f0 });
+            if (v) { st.font = v; fBtn.textContent = '글꼴: ' + v; fBtn.classList.add('on'); t.style.fontFamily = `"${v}"`; }
+          } });
+          const sBtn = el('button', { class: 'chip', text: '크기: ' + s0, onclick: async () => {
+            const v = await pickSize(st.size || s0);
+            if (v) { st.size = v; sBtn.textContent = '크기: ' + v; sBtn.classList.add('on'); }
+          } });
+          return el('div', { class: 'block-edit' }, el('div', { class: 'chip-row' }, el('small', { class: 'hint', text: `글상자 ${bi + 1}` }), fBtn, sBtn), t);
+        }),
         el('div', { class: 'dialog-buttons' },
           el('button', { text: '복제', onclick: () => done('dup') }),
           el('button', { class: 'danger', text: '삭제', onclick: () => done('del') }),
           el('button', { class: 'primary', text: '적용', onclick: () => done('apply') }))));
     if (result === 'apply') {
       let changed = false;
-      blocks.forEach((ps, i) => { if (areas[i].value !== ps.map((p) => paraText(p, A)).join('\n')) { applyBlock(ps, areas[i].value); changed = true; } });
+      const fonts = [];
+      blocks.forEach((ps, i) => {
+        if (areas[i].value !== ps.map((p) => paraText(p, A)).join('\n')) { applyBlock(ps, areas[i].value); changed = true; }
+        if (styles[i].font || styles[i].size) { styleBlock(ps, styles[i].font, styles[i].size); changed = true; if (styles[i].font) fonts.push(styles[i].font); }
+      });
+      await ensureFonts(fonts);
       if (!changed) return;
       zip.file(path, serializeXml(xml));
       await busy('슬라이드를 다시 그리는 중…', () => rebuild(index));

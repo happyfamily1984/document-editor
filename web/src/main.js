@@ -1,6 +1,12 @@
 import { $, el, toast, busy, dialog, confirmDialog, alertDialog, menu, sheet, promptText, closeTopOverlay } from './ui.js';
 import * as native from './native.js';
 import { putDraft, getDraft, deleteDraft, listDrafts } from './drafts.js';
+import { initFonts, pickFont, fontCount } from './fonts.js';
+
+// 앱에 든 글꼴 목록(CSS)과 받아 둔 글꼴을 등록한다
+document.head.append(el('link', { rel: 'stylesheet', href: './fonts/fonts.css' }));
+initFonts();
+const manageFonts = () => pickFont({ manage: true, title: '글꼴 (받기·지우기)' });
 
 const KINDS = {
   docx: 'docx', docm: 'docx', dotx: 'docx', xlsx: 'xlsx', xlsm: 'xlsx', xls: 'xlsx', csv: 'xlsx', tsv: 'xlsx',
@@ -422,12 +428,13 @@ async function newDoc(kind) {
 function about() {
   sheet('안내', () => el('div', { class: 'about' },
     el('p', { text: '한글(HWP·HWPX), 워드(DOCX·DOC), 엑셀(XLSX·XLS·CSV), 파워포인트(PPTX·PPT), PDF, 글 파일을 열고 고칠 수 있습니다.' }),
-    el('p', { text: '파일은 이 기기 안에서만 열고 고치며, 어디에도 올리지 않습니다. 인터넷 연결 없이도 동작합니다.' }),
+    el('p', { text: '파일은 이 기기 안에서만 열고 고치며, 어디에도 올리지 않습니다. 인터넷 연결 없이도 동작합니다. (글꼴을 받을 때만 인터넷에서 글꼴 파일을 내려받으며, 이때 문서 내용은 보내지 않습니다.)' }),
     el('p', { text: '이 앱은 있는 그대로 제공되며, 파일 손상·손실에 대해 책임지지 않습니다. 중요한 문서는 원본을 따로 보관해 주세요.' }),
     el('p', { text: '한글·HWP는 한글과컴퓨터의, Word·Excel·PowerPoint는 Microsoft의 상표입니다. 이 앱은 두 회사와 관계없는 독립 앱입니다.' }),
     el('h4', { text: '오픈소스' }),
     el('p', { class: 'small', text: 'rhwp (MIT) · docx-preview (Apache-2.0) · pptx-renderer (Apache-2.0) · PDF.js (Apache-2.0) · pdf-lib (MIT) · SheetJS (Apache-2.0) · JSZip (MIT) · PptxGenJS (MIT) · cfb (Apache-2.0)' }),
-    el('p', { class: 'small', text: '문서 편집기 1.4' })));
+    el('p', { class: 'small', text: '글꼴: 네이버 나눔글꼴·마루부리, 배달의민족 글꼴, 학교안심 글꼴, Noto Sans/Serif KR, Pretendard, SUIT, Wanted Sans, LINE Seed, 리디바탕, KCC-한빛, D2Coding, 구글 한글 글꼴 등 — 모두 SIL Open Font License 1.1' }),
+    el('p', { class: 'small', text: '문서 편집기 1.5' })));
 }
 
 // ───────── 기본 앱 설정 ─────────
@@ -471,10 +478,12 @@ $('#search-btn').onclick = () => { setTab('recent'); $('#recent-search').focus()
 $('#settings-btn').onclick = () => setTab('settings');
 $('#recent-search').oninput = renderRecents;
 $('#menu-btn').onclick = async () => {
-  const pick = await menu('문서 편집기', [{ label: '파일 열기', value: 'open' }, { label: '최근 문서', value: 'recent' }, { label: '내 문서', value: 'mine' }, native.isNative ? { label: '기본 앱으로 설정', value: 'defaults' } : null, { label: '안내', value: 'about' }].filter(Boolean));
-  if (pick === 'open') pickAndOpen(); else if (pick === 'defaults') defaultsSheet(); else if (pick === 'about') about(); else if (pick) setTab(pick);
+  const pick = await menu('문서 편집기', [{ label: '파일 열기', value: 'open' }, { label: '최근 문서', value: 'recent' }, { label: '내 문서', value: 'mine' }, { label: '글꼴', value: 'fonts' }, native.isNative ? { label: '기본 앱으로 설정', value: 'defaults' } : null, { label: '안내', value: 'about' }].filter(Boolean));
+  if (pick === 'open') pickAndOpen(); else if (pick === 'fonts') manageFonts(); else if (pick === 'defaults') defaultsSheet(); else if (pick === 'about') about(); else if (pick) setTab(pick);
 };
 $('#about-btn').onclick = about;
+$('#fonts-btn').onclick = manageFonts;
+{ const c = fontCount(); $('#fonts-btn small').textContent = `앱에 든 글꼴 ${c.bundled}종 · 받아 쓰는 글꼴 ${c.downloadable}종`; }
 $('#defaults-btn').hidden = !native.isNative;
 $('#defaults-btn').onclick = defaultsSheet;
 // 기본 앱 고르기 창에서 이 앱을 골라 돌아오면 설정 창을 다시 보여 준다

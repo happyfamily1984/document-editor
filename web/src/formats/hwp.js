@@ -2,6 +2,7 @@
 import init, { HwpDocument } from '@rhwp/core';
 import wasmUrl from '@rhwp/core/rhwp_bg.wasm?url';
 import { el, toast, promptText } from '../ui.js';
+import { pickFont, pickSize, ensureFonts } from '../fonts.js';
 
 let ready = null;
 function ensureInit() {
@@ -52,6 +53,8 @@ export async function open({ bytes, ext, body, scroll, ctx }) {
     body.replaceChildren(...pageDivs);
     pageDivs.forEach((d) => observer.observe(d));
   }
+  // 글자 폭을 재기 전에 문서에 쓰인 글꼴을 미리 읽어 둔다(그래야 줄바꿈이 맞는다)
+  try { await ensureFonts(JSON.parse(doc.getDocumentInfo()).fontsUsed || []); } catch {}
   layout();
 
   // 문단 위치(본문 또는 표 칸 안)에 따라 알맞은 API를 부른다
@@ -60,7 +63,18 @@ export async function open({ bytes, ext, body, scroll, ctx }) {
     if (hit.cellPath) {
       const path = hit.cellPath.map((x) => ({ ...x })), parent = hit.parentParaIndex;
       const pj = () => JSON.stringify(path);
+      const first = path[path.length - 1].cellParaIndex;
       return {
+        props: () => JSON.parse(doc.getCellCharPropertiesAtByPath(s, parent, pj(), 0)),
+        // 고친 문단(줄을 나눴으면 나뉜 문단까지)에 글자 서식을 건다
+        format: (props) => {
+          const last = path[path.length - 1].cellParaIndex;
+          for (let i = first; i <= last; i++) {
+            const pp = path.map((x) => ({ ...x })); pp[pp.length - 1].cellParaIndex = i;
+            const len = doc.getCellParagraphLengthByPath(s, parent, JSON.stringify(pp));
+            if (len) ok(doc.applyCharFormatInCellByPath(s, parent, JSON.stringify(pp), 0, len, JSON.stringify(props)));
+          }
+        },
         text: () => doc.getTextInCellByPath(s, parent, pj(), 0, doc.getCellParagraphLengthByPath(s, parent, pj())),
         del: (off, n) => ok(doc.deleteTextInCellByPath(s, parent, pj(), off, n)),
         ins: (off, t) => ok(doc.insertTextInCellByPath(s, parent, pj(), off, t)),
@@ -68,7 +82,15 @@ export async function open({ bytes, ext, body, scroll, ctx }) {
       };
     }
     let para = hit.paragraphIndex;
+    const first = para;
     return {
+      props: () => JSON.parse(doc.getCharPropertiesAt(s, para, 0)),
+      format: (props) => {
+        for (let i = first; i <= para; i++) {
+          const len = doc.getParagraphLength(s, i);
+          if (len) ok(doc.applyCharFormat(s, i, 0, len, JSON.stringify(props)));
+        }
+      },
       text: () => doc.getTextRange(s, para, 0, doc.getParagraphLength(s, para)),
       del: (off, n) => ok(doc.deleteText(s, para, off, n)),
       ins: (off, t) => ok(doc.insertText(s, para, off, t)),
@@ -83,8 +105,26 @@ export async function open({ bytes, ext, body, scroll, ctx }) {
     const acc = accessor(hit);
     let old;
     try { old = acc.text(); } catch { return toast('이 자리는 고칠 수 없습니다.'); }
-    const next = await promptText(hit.cellPath ? '표 칸 글 고치기' : '문단 고치기', old, { multiline: true, okLabel: '적용' });
-    if (next == null || next === old) return;
+    let cur = {};
+    try { cur = acc.props(); } catch {}
+    let font = null, size = null; // 새로 고른 글꼴·크기
+    const next = await promptText(hit.cellPath ? '표 칸 글 고치기' : '문단 고치기', old, {
+      multiline: true, okLabel: '적용',
+      extra: () => {
+        const fBtn = el('button', { class: 'chip', text: '글꼴: ' + (cur.fontFamily || '기본'), onclick: async () => {
+          const v = await pickFont({ current: font || cur.fontFamily });
+          if (v) { font = v; fBtn.textContent = '글꼴: ' + v; fBtn.classList.add('on'); }
+        } });
+        const curPt = cur.fontSize ? cur.fontSize / 100 : 10;
+        const sBtn = el('button', { class: 'chip', text: '크기: ' + curPt, onclick: async () => {
+          const v = await pickSize(size || curPt);
+          if (v) { size = v; sBtn.textContent = '크기: ' + v; sBtn.classList.add('on'); }
+        } });
+        return el('div', { class: 'chip-row' }, fBtn, sBtn, el('small', { class: 'hint', text: '이 문단 전체에 적용됩니다' }));
+      },
+    });
+    if (next == null || (next === old && !font && !size)) return;
+    if (font) await ensureFonts([font], next);
     try {
       // 바뀐 부분만 지우고 넣는다(문단 안의 표·그림 같은 개체를 건드리지 않도록)
       let pre = 0; const max = Math.min(old.length, next.length);
@@ -98,6 +138,10 @@ export async function open({ bytes, ext, body, scroll, ctx }) {
         if (i > 0) { acc.split(off); off = 0; }
         if (line) { acc.ins(off, line); off += line.length; }
       });
+      const props = {};
+      if (font) props.fontName = font;
+      if (size) props.fontSize = Math.round(size * 100);
+      if (font || size) acc.format(props);
       ctx.changed();
     } catch (e) { toast('고치지 못했습니다: ' + String(e.message || e).slice(0, 100)); }
     const top = scroll.scrollTop;

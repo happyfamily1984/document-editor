@@ -8,8 +8,8 @@ android {
         applicationId 'com.docedit.app'
         minSdk 26
         targetSdk 34
-        versionCode 5
-        versionName '1.4'
+        versionCode 6
+        versionName '1.5'
     }
     signingConfigs {
         // 직접 설치(사이드로드)용 서명 키. 같은 키로 서명해야 덮어 설치(업데이트)가 된다.

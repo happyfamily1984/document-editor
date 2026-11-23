@@ -1,0 +1,1839 @@
+{
+ "bundled": [
+  {
+   "id": "nanumgothic",
+   "name": "나눔고딕",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "nanumbarungothic",
+   "name": "나눔바른고딕",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "nanumsquare",
+   "name": "나눔스퀘어",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "nanumsquareround",
+   "name": "나눔스퀘어라운드",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "nanumsquareac",
+   "name": "나눔스퀘어 ac",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "notosanskr",
+   "name": "Noto Sans KR",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "pretendard",
+   "name": "Pretendard",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "suit",
+   "name": "SUIT",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "wantedsans",
+   "name": "Wanted Sans",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "gowundodum",
+   "name": "고운돋움",
+   "cat": "고딕",
+   "bold": false
+  },
+  {
+   "id": "gothica1",
+   "name": "Gothic A1",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "ibmplexsanskr",
+   "name": "IBM Plex Sans KR",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "lineseed",
+   "name": "LINE Seed Sans KR",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "hgbareondotum",
+   "name": "학교안심 바른돋움",
+   "cat": "고딕",
+   "bold": true
+  },
+  {
+   "id": "hgsantteutdotum",
+   "name": "학교안심 산뜻돋움",
+   "cat": "고딕",
+   "bold": false
+  },
+  {
+   "id": "nanummyeongjo",
+   "name": "나눔명조",
+   "cat": "명조",
+   "bold": true
+  },
+  {
+   "id": "maruburi",
+   "name": "마루 부리",
+   "cat": "명조",
+   "bold": true
+  },
+  {
+   "id": "notoserifkr",
+   "name": "Noto Serif KR",
+   "cat": "명조",
+   "bold": true
+  },
+  {
+   "id": "gowunbatang",
+   "name": "고운바탕",
+   "cat": "명조",
+   "bold": true
+  },
+  {
+   "id": "hahmlet",
+   "name": "함렛",
+   "cat": "명조",
+   "bold": true
+  },
+  {
+   "id": "ridibatang",
+   "name": "리디바탕",
+   "cat": "명조",
+   "bold": false
+  },
+  {
+   "id": "hgbareonbatang",
+   "name": "학교안심 바른바탕",
+   "cat": "명조",
+   "bold": true
+  },
+  {
+   "id": "hgsantteutbatang",
+   "name": "학교안심 산뜻바탕",
+   "cat": "명조",
+   "bold": false
+  },
+  {
+   "id": "kcchanbit",
+   "name": "KCC-한빛",
+   "cat": "명조",
+   "bold": false
+  },
+  {
+   "id": "songmyung",
+   "name": "송명",
+   "cat": "명조",
+   "bold": false
+  },
+  {
+   "id": "nanumpen",
+   "name": "나눔손글씨 펜",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "nanumbrush",
+   "name": "나눔손글씨 붓",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "nanumbarunpen",
+   "name": "나눔바른펜",
+   "cat": "손글씨",
+   "bold": true
+  },
+  {
+   "id": "ttobagttobag",
+   "name": "나눔손글씨 또박또박",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "gaegu",
+   "name": "개구",
+   "cat": "손글씨",
+   "bold": true
+  },
+  {
+   "id": "himelody",
+   "name": "하이멜로디",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "gamjaflower",
+   "name": "감자꽃",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "poorstory",
+   "name": "서툰 이야기",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "singleday",
+   "name": "싱글데이",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "cutefont",
+   "name": "귀여운 글꼴",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "dokdo",
+   "name": "독도",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "eastseadokdo",
+   "name": "동해 독도",
+   "cat": "손글씨",
+   "bold": false
+  },
+  {
+   "id": "bmjua",
+   "name": "배민 주아",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "bmdohyeon",
+   "name": "배민 도현",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "bmhannapro",
+   "name": "배민 한나 Pro",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "bmhanna11",
+   "name": "배민 한나는 열한살",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "bmhannaair",
+   "name": "배민 한나 Air",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "bmyeonsung",
+   "name": "배민 연성",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "bmeuljiro",
+   "name": "배민 을지로",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "bmeuljiro10",
+   "name": "배민 을지로10년후",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "kiranghaerang",
+   "name": "기랑해랑",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "blackhansans",
+   "name": "검은고딕",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "gugi",
+   "name": "구기",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "stylish",
+   "name": "스타일리시",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "sunflower",
+   "name": "해바라기",
+   "cat": "꾸밈",
+   "bold": true
+  },
+  {
+   "id": "dongle",
+   "name": "동글",
+   "cat": "꾸밈",
+   "bold": true
+  },
+  {
+   "id": "orbit",
+   "name": "오르빛",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "diphylleia",
+   "name": "산하엽",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "gasoek",
+   "name": "가석",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "moirai",
+   "name": "모이라이",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "grandiflora",
+   "name": "능소화",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "bagelfat",
+   "name": "베이글",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "bwpicture",
+   "name": "흑백사진",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "neodgm",
+   "name": "Neo둥근모",
+   "cat": "꾸밈",
+   "bold": false
+  },
+  {
+   "id": "d2coding",
+   "name": "D2Coding",
+   "cat": "코딩",
+   "bold": true
+  },
+  {
+   "id": "nanumgothiccoding",
+   "name": "나눔고딕코딩",
+   "cat": "코딩",
+   "bold": true
+  }
+ ],
+ "download": [
+  {
+   "id": "dl-daehwa-nanum",
+   "name": "대화나눔",
+   "label": "대화나눔",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/daehwa-nanum@0.1.0/daehwa-nanum-regular.woff2",
+    "700": "https://cdn.jsdelivr.net/npm/@kfonts/daehwa-nanum@0.1.0/daehwa-nanum-bold.woff2"
+   },
+   "size": 578280
+  },
+  {
+   "id": "dl-bm-kiranghaerang",
+   "name": "배달의민족 기랑해랑",
+   "label": "배달의민족 기랑해랑",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/bm-kiranghaerang@0.2.0/BMKIRANGHAERANG-TTF.woff2"
+   },
+   "size": 484256
+  },
+  {
+   "id": "dl-hakgyoansim-gaeulsopung",
+   "name": "학교안심 가을소풍",
+   "label": "학교안심 가을소풍",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-gaeulsopung@0.1.0/HakgyoansimGaeulsopungL.woff2",
+    "700": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-gaeulsopung@0.1.0/HakgyoansimGaeulsopungB.woff2"
+   },
+   "size": 1067192
+  },
+  {
+   "id": "dl-hakgyoansim-godeunjemok",
+   "name": "학교안심 곧은제목",
+   "label": "학교안심 곧은제목",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-godeunjemok@0.1.0/HakgyoansimGodeunjemokM.woff2",
+    "700": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-godeunjemok@0.1.0/HakgyoansimGodeunjemokB.woff2"
+   },
+   "size": 527352
+  },
+  {
+   "id": "dl-hakgyoansim-kkokkoma",
+   "name": "학교안심 꼬꼬마",
+   "label": "학교안심 꼬꼬마",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-kkokkoma@0.1.0/HakgyoansimKkokkomaR.woff2"
+   },
+   "size": 241828
+  },
+  {
+   "id": "dl-hakgyoansim-kkwabaegi",
+   "name": "학교안심 꽈배기",
+   "label": "학교안심 꽈배기",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-kkwabaegi@0.1.0/HakgyoansimKkwabaegiR.woff2"
+   },
+   "size": 239348
+  },
+  {
+   "id": "dl-hakgyoansim-gureum",
+   "name": "학교안심 꾸러기",
+   "label": "학교안심 꾸러기",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-gureum@0.1.0/HakgyoansimGgooreogiR.woff2"
+   },
+   "size": 252488
+  },
+  {
+   "id": "dl-hakgyoansim-namu",
+   "name": "학교안심 나무",
+   "label": "학교안심 나무",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-namu@0.1.0/HakgyoansimNamuR.woff2"
+   },
+   "size": 198464
+  },
+  {
+   "id": "dl-hakgyoansim-dotbogi",
+   "name": "학교안심 돋보기",
+   "label": "학교안심 돋보기",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-dotbogi@0.1.0/HakgyoansimDotbogiR.woff2"
+   },
+   "size": 185760
+  },
+  {
+   "id": "dl-hakgyoansim-doldam",
+   "name": "학교안심 돌담",
+   "label": "학교안심 돌담",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-doldam@0.1.0/HakgyoansimDoldamL.woff2",
+    "700": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-doldam@0.1.0/HakgyoansimDoldamB.woff2"
+   },
+   "size": 543704
+  },
+  {
+   "id": "dl-hakgyoansim-ttwimteul",
+   "name": "학교안심 뜀틀",
+   "label": "학교안심 뜀틀",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-ttwimteul@0.1.0/HakgyoansimTtwimteulR.woff2"
+   },
+   "size": 214904
+  },
+  {
+   "id": "dl-hakgyoansim-rikodeo",
+   "name": "학교안심 리코더",
+   "label": "학교안심 리코더",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-rikodeo@0.1.0/HakgyoansimRikodeoR.woff2"
+   },
+   "size": 178612
+  },
+  {
+   "id": "dl-hakgyoansim-mabeopsa",
+   "name": "학교안심 마법사",
+   "label": "학교안심 마법사",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-mabeopsa@0.1.0/HakgyoansimMabeopsaR.woff2"
+   },
+   "size": 231828
+  },
+  {
+   "id": "dl-hakgyoansim-malgeunnal",
+   "name": "학교안심 맑은날",
+   "label": "학교안심 맑은날",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-malgeunnal@0.1.0/HakgyoansimMalgeunnalM.woff2",
+    "700": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-malgeunnal@0.1.0/HakgyoansimMalgeunnalB.woff2"
+   },
+   "size": 435952
+  },
+  {
+   "id": "dl-hakgyoansim-moheomga",
+   "name": "학교안심 모험가",
+   "label": "학교안심 모험가",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-moheomga@0.1.0/HakgyoansimMoheomgaR.woff2",
+    "700": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-moheomga@0.1.0/HakgyoansimMoheomgaB.woff2"
+   },
+   "size": 384548
+  },
+  {
+   "id": "dl-hakgyoansim-monggeulmonggeul",
+   "name": "학교안심 몽글몽글",
+   "label": "학교안심 몽글몽글",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-monggeulmonggeul@0.1.0/HakgyoansimMonggeulmonggeulR.woff2"
+   },
+   "size": 189216
+  },
+  {
+   "id": "dl-hakgyoansim-mulgyeol",
+   "name": "학교안심 물결",
+   "label": "학교안심 물결",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-mulgyeol@0.1.0/HakgyoansimMulgyeolR.woff2",
+    "700": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-mulgyeol@0.1.0/HakgyoansimMulgyeolB.woff2"
+   },
+   "size": 347400
+  },
+  {
+   "id": "dl-hakgyoansim-bombanghak",
+   "name": "학교안심 봄방학",
+   "label": "학교안심 봄방학",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-bombanghak@0.1.0/HakgyoansimBombanghakR.woff2"
+   },
+   "size": 219076
+  },
+  {
+   "id": "dl-hakgyoansim-bunpil",
+   "name": "학교안심 분필",
+   "label": "학교안심 분필",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-bunpil@0.1.0/HakgyoansimBunpilR.woff2"
+   },
+   "size": 318408
+  },
+  {
+   "id": "dl-hakgyoansim-samulham",
+   "name": "학교안심 사물함",
+   "label": "학교안심 사물함",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-samulham@0.1.0/HakgyoansimSamulhamR.woff2"
+   },
+   "size": 202320
+  },
+  {
+   "id": "dl-hakgyoansim-sonagi",
+   "name": "학교안심 소나기",
+   "label": "학교안심 소나기",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-sonagi@0.1.0/HakgyoansimSonagiR.woff2"
+   },
+   "size": 174700
+  },
+  {
+   "id": "dl-hakgyoansim-yeohaeng",
+   "name": "학교안심 여행",
+   "label": "학교안심 여행",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-yeohaeng@0.1.0/HakgyoansimYeohaengR.woff2"
+   },
+   "size": 170812
+  },
+  {
+   "id": "dl-hakgyoansim-usan",
+   "name": "학교안심 우산",
+   "label": "학교안심 우산",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-usan@0.1.0/HakgyoansimUsanR.woff2"
+   },
+   "size": 175556
+  },
+  {
+   "id": "dl-hakgyoansim-wooju",
+   "name": "학교안심 우주",
+   "label": "학교안심 우주",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-wooju@0.1.0/HakgyoansimWoojuR.woff2"
+   },
+   "size": 205644
+  },
+  {
+   "id": "dl-hakgyoansim-undongjang",
+   "name": "학교안심 운동장",
+   "label": "학교안심 운동장",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-undongjang@0.1.0/HakgyoansimUndongjangL.woff2"
+   },
+   "size": 169896
+  },
+  {
+   "id": "dl-hakgyoansim-eunhasu",
+   "name": "학교안심 은하수",
+   "label": "학교안심 은하수",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-eunhasu@0.1.0/HakgyoansimEunhasuR.woff2"
+   },
+   "size": 210228
+  },
+  {
+   "id": "dl-hakgyoansim-jeomsimsigan",
+   "name": "학교안심 점심시간",
+   "label": "학교안심 점심시간",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-jeomsimsigan@0.1.0/HakgyoansimJeomsimsiganB.woff2",
+    "700": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-jeomsimsigan@0.1.0/HakgyoansimJeomsimsiganB.woff2"
+   },
+   "size": 411576
+  },
+  {
+   "id": "dl-hakgyoansim-jiugae",
+   "name": "학교안심 지우개",
+   "label": "학교안심 지우개",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-jiugae@0.1.0/HakgyoansimJiugaeR.woff2"
+   },
+   "size": 207940
+  },
+  {
+   "id": "dl-hakgyoansim-kossuyeom",
+   "name": "학교안심 콧수염",
+   "label": "학교안심 콧수염",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-kossuyeom@0.1.0/HakgyoansimKossuyeomR.woff2"
+   },
+   "size": 226008
+  },
+  {
+   "id": "dl-hakgyoansim-tuho",
+   "name": "학교안심 투호",
+   "label": "학교안심 투호",
+   "cat": "꾸밈",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-tuho@0.1.0/HakgyoansimTuhoR.woff2"
+   },
+   "size": 216172
+  },
+  {
+   "id": "dl-nanum-handwritting-galam-yeonkkoch",
+   "name": "나눔손글씨 가람연꽃",
+   "label": "나눔손글씨 가람연꽃",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-galam-yeonkkoch@0.2.0/galam-yeonkkoch.woff2"
+   },
+   "size": 3033340
+  },
+  {
+   "id": "dl-nanum-handwritting-galmaesgeul",
+   "name": "나눔손글씨 갈맷글",
+   "label": "나눔손글씨 갈맷글",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-galmaesgeul@0.2.0/galmaesgeul.woff2"
+   },
+   "size": 2964180
+  },
+  {
+   "id": "dl-nanum-handwritting-gangbujangnimche",
+   "name": "나눔손글씨 강부장님체",
+   "label": "나눔손글씨 강부장님체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-gangbujangnimche@0.2.0/gangbujangnimche.woff2"
+   },
+   "size": 3228152
+  },
+  {
+   "id": "dl-nanum-handwritting-gang-inhan-wilo",
+   "name": "나눔손글씨 강인한 위로",
+   "label": "나눔손글씨 강인한 위로",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-gang-inhan-wilo@0.2.0/gang-inhan-wilo.woff2"
+   },
+   "size": 2553152
+  },
+  {
+   "id": "dl-nanum-handwritting-godig-anigo-goding",
+   "name": "나눔손글씨 고딕 아니고 고딩",
+   "label": "나눔손글씨 고딕 아니고 고딩",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-godig-anigo-goding@0.2.0/godig-anigo-goding.woff2"
+   },
+   "size": 3151532
+  },
+  {
+   "id": "dl-nanum-handwritting-golyeogeulkkol",
+   "name": "나눔손글씨 고려글꼴",
+   "label": "나눔손글씨 고려글꼴",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-golyeogeulkkol@0.2.0/golyeogeulkkol.woff2"
+   },
+   "size": 2892972
+  },
+  {
+   "id": "dl-nanum-handwritting-gomsinche",
+   "name": "나눔손글씨 곰신체",
+   "label": "나눔손글씨 곰신체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-gomsinche@0.2.0/gomsinche.woff2"
+   },
+   "size": 2690440
+  },
+  {
+   "id": "dl-nanum-handwritting-gyuli-ui-ilgi",
+   "name": "나눔손글씨 규리의 일기",
+   "label": "나눔손글씨 규리의 일기",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-gyuli-ui-ilgi@0.2.0/gyuli-ui-ilgi.woff2"
+   },
+   "size": 2892908
+  },
+  {
+   "id": "dl-nanum-handwritting-geum-eunbohwa",
+   "name": "나눔손글씨 금은보화",
+   "label": "나눔손글씨 금은보화",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-geum-eunbohwa@0.2.0/geum-eunbohwa.woff2"
+   },
+   "size": 2517612
+  },
+  {
+   "id": "dl-nanum-handwritting-gi-ppeumbalg-eum",
+   "name": "나눔손글씨 기쁨밝음",
+   "label": "나눔손글씨 기쁨밝음",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-gi-ppeumbalg-eum@0.2.0/gi-ppeumbalg-eum.woff2"
+   },
+   "size": 2609448
+  },
+  {
+   "id": "dl-nanum-handwritting-gim-yu-iche",
+   "name": "나눔손글씨 김유이체",
+   "label": "나눔손글씨 김유이체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-gim-yu-iche@0.2.0/gim-yu-iche.woff2"
+   },
+   "size": 2793560
+  },
+  {
+   "id": "dl-nanum-handwritting-kkochnae-eum",
+   "name": "나눔손글씨 꽃내음",
+   "label": "나눔손글씨 꽃내음",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-kkochnae-eum@0.2.0/kkochnae-eum.woff2"
+   },
+   "size": 2811664
+  },
+  {
+   "id": "dl-nanum-handwritting-kkeuteumeoliche",
+   "name": "나눔손글씨 끄트머리체",
+   "label": "나눔손글씨 끄트머리체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-kkeuteumeoliche@0.2.0/kkeuteumeoliche.woff2"
+   },
+   "size": 3299568
+  },
+  {
+   "id": "dl-nanum-handwritting-naneun-igyeonaenda",
+   "name": "나눔손글씨 나는 이겨낸다",
+   "label": "나눔손글씨 나는 이겨낸다",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-naneun-igyeonaenda@0.2.0/naneun-igyeonaenda.woff2"
+   },
+   "size": 2783368
+  },
+  {
+   "id": "dl-nanum-handwritting-namujeong-won",
+   "name": "나눔손글씨 나무정원",
+   "label": "나눔손글씨 나무정원",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-namujeong-won@0.2.0/namujeong-won.woff2"
+   },
+   "size": 3129548
+  },
+  {
+   "id": "dl-nanum-handwritting-na-ui-anae-songeul-ssi",
+   "name": "나눔손글씨 나의 아내 손글씨",
+   "label": "나눔손글씨 나의 아내 손글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-na-ui-anae-songeul-ssi@0.2.0/na-ui-anae-songeul-ssi.woff2"
+   },
+   "size": 2641036
+  },
+  {
+   "id": "dl-nanum-handwritting-nolyeoghaneun-donghui",
+   "name": "나눔손글씨 노력하는 동희",
+   "label": "나눔손글씨 노력하는 동희",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-nolyeoghaneun-donghui@0.2.0/nolyeoghaneun-donghui.woff2"
+   },
+   "size": 2685012
+  },
+  {
+   "id": "dl-nanum-handwritting-neulisneulische",
+   "name": "나눔손글씨 느릿느릿체",
+   "label": "나눔손글씨 느릿느릿체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-neulisneulische@0.2.0/neulisneulische.woff2"
+   },
+   "size": 2621904
+  },
+  {
+   "id": "dl-nanum-handwritting-dasi-sijaghae",
+   "name": "나눔손글씨 다시 시작해",
+   "label": "나눔손글씨 다시 시작해",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-dasi-sijaghae@0.2.0/dasi-sijaghae.woff2"
+   },
+   "size": 2732080
+  },
+  {
+   "id": "dl-nanum-handwritting-dajinche",
+   "name": "나눔손글씨 다진체",
+   "label": "나눔손글씨 다진체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-dajinche@0.2.0/dajinche.woff2"
+   },
+   "size": 2674204
+  },
+  {
+   "id": "dl-nanum-handwritting-dachaesalang",
+   "name": "나눔손글씨 다채사랑",
+   "label": "나눔손글씨 다채사랑",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-dachaesalang@0.2.0/dachaesalang.woff2"
+   },
+   "size": 2903612
+  },
+  {
+   "id": "dl-nanum-handwritting-dahaengche",
+   "name": "나눔손글씨 다행체",
+   "label": "나눔손글씨 다행체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-dahaengche@0.2.0/dahaengche.woff2"
+   },
+   "size": 2770292
+  },
+  {
+   "id": "dl-nanum-handwritting-dal-uigwedo",
+   "name": "나눔손글씨 달의궤도",
+   "label": "나눔손글씨 달의궤도",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-dal-uigwedo@0.2.0/dal-uigwedo.woff2"
+   },
+   "size": 2416804
+  },
+  {
+   "id": "dl-nanum-handwritting-daegwang-yuli",
+   "name": "나눔손글씨 대광유리",
+   "label": "나눔손글씨 대광유리",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-daegwang-yuli@0.2.0/daegwang-yuli.woff2"
+   },
+   "size": 2825788
+  },
+  {
+   "id": "dl-nanum-handwritting-daehanmingug-yeolsache",
+   "name": "나눔손글씨 대한민국 열사체",
+   "label": "나눔손글씨 대한민국 열사체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-daehanmingug-yeolsache@0.2.0/daehanmingug-yeolsache.woff2"
+   },
+   "size": 3034336
+  },
+  {
+   "id": "dl-nanum-handwritting-donghwa-ttobag",
+   "name": "나눔손글씨 동화또박",
+   "label": "나눔손글씨 동화또박",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-donghwa-ttobag@0.2.0/donghwa-ttobag.woff2"
+   },
+   "size": 3268540
+  },
+  {
+   "id": "dl-nanum-handwritting-dunggeun-in-yeon",
+   "name": "나눔손글씨 둥근인연",
+   "label": "나눔손글씨 둥근인연",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-dunggeun-in-yeon@0.2.0/dunggeun-in-yeon.woff2"
+   },
+   "size": 2508544
+  },
+  {
+   "id": "dl-nanum-handwritting-tta-tteushan-jagbyeol",
+   "name": "나눔손글씨 따뜻한 작별",
+   "label": "나눔손글씨 따뜻한 작별",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-tta-tteushan-jagbyeol@0.2.0/tta-tteushan-jagbyeol.woff2"
+   },
+   "size": 2752696
+  },
+  {
+   "id": "dl-nanum-handwritting-tta-agdandan",
+   "name": "나눔손글씨 따악단단",
+   "label": "나눔손글씨 따악단단",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-tta-agdandan@0.2.0/tta-agdandan.woff2"
+   },
+   "size": 2641160
+  },
+  {
+   "id": "dl-nanum-handwritting-ttal-ege-eommaga",
+   "name": "나눔손글씨 딸에게 엄마가",
+   "label": "나눔손글씨 딸에게 엄마가",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-ttal-ege-eommaga@0.2.0/ttal-ege-eommaga.woff2"
+   },
+   "size": 2949672
+  },
+  {
+   "id": "dl-nanum-handwritting-magoche",
+   "name": "나눔손글씨 마고체",
+   "label": "나눔손글씨 마고체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-magoche@0.2.0/magoche.woff2"
+   },
+   "size": 2717060
+  },
+  {
+   "id": "dl-nanum-handwritting-mas-issneunche",
+   "name": "나눔손글씨 맛있는체",
+   "label": "나눔손글씨 맛있는체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-mas-issneunche@0.2.0/mas-issneunche.woff2"
+   },
+   "size": 2648740
+  },
+  {
+   "id": "dl-nanum-handwritting-mongdol",
+   "name": "나눔손글씨 몽돌",
+   "label": "나눔손글씨 몽돌",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-mongdol@0.2.0/mongdol.woff2"
+   },
+   "size": 2911632
+  },
+  {
+   "id": "dl-nanum-handwritting-mugunghwa",
+   "name": "나눔손글씨 무궁화",
+   "label": "나눔손글씨 무궁화",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-mugunghwa@0.2.0/mugunghwa.woff2"
+   },
+   "size": 2447320
+  },
+  {
+   "id": "dl-nanum-handwritting-mujinjangche",
+   "name": "나눔손글씨 무진장체",
+   "label": "나눔손글씨 무진장체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-mujinjangche@0.2.0/mujinjangche.woff2"
+   },
+   "size": 2532120
+  },
+  {
+   "id": "dl-nanum-handwritting-mini-songeul-ssi",
+   "name": "나눔손글씨 미니 손글씨",
+   "label": "나눔손글씨 미니 손글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-mini-songeul-ssi@0.2.0/mini-songeul-ssi.woff2"
+   },
+   "size": 2728624
+  },
+  {
+   "id": "dl-nanum-handwritting-milaenamu",
+   "name": "나눔손글씨 미래나무",
+   "label": "나눔손글씨 미래나무",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-milaenamu@0.2.0/milaenamu.woff2"
+   },
+   "size": 2782808
+  },
+  {
+   "id": "dl-nanum-handwritting-baleunjeongsin",
+   "name": "나눔손글씨 바른정신",
+   "label": "나눔손글씨 바른정신",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-baleunjeongsin@0.2.0/baleunjeongsin.woff2"
+   },
+   "size": 3278544
+  },
+  {
+   "id": "dl-nanum-handwritting-baleunhipi",
+   "name": "나눔손글씨 바른히피",
+   "label": "나눔손글씨 바른히피",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-baleunhipi@0.2.0/baleunhipi.woff2"
+   },
+   "size": 2726108
+  },
+  {
+   "id": "dl-nanum-handwritting-ban-jjagban-jjag-byeol",
+   "name": "나눔손글씨 반짝반짝 별",
+   "label": "나눔손글씨 반짝반짝 별",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-ban-jjagban-jjag-byeol@0.2.0/ban-jjagban-jjag-byeol.woff2"
+   },
+   "size": 2761104
+  },
+  {
+   "id": "dl-nanum-handwritting-bae-eunhyeche",
+   "name": "나눔손글씨 배은혜체",
+   "label": "나눔손글씨 배은혜체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-bae-eunhyeche@0.2.0/bae-eunhyeche.woff2"
+   },
+   "size": 2659920
+  },
+  {
+   "id": "dl-nanum-handwritting-baeg-ui-ui-cheonsa",
+   "name": "나눔손글씨 백의의 천사",
+   "label": "나눔손글씨 백의의 천사",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-baeg-ui-ui-cheonsa@0.2.0/baeg-ui-ui-cheonsa.woff2"
+   },
+   "size": 2553692
+  },
+  {
+   "id": "dl-nanum-handwritting-beodeunamu",
+   "name": "나눔손글씨 버드나무",
+   "label": "나눔손글씨 버드나무",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-beodeunamu@0.2.0/beodeunamu.woff2"
+   },
+   "size": 2812824
+  },
+  {
+   "id": "dl-nanum-handwritting-beomsomche",
+   "name": "나눔손글씨 범솜체",
+   "label": "나눔손글씨 범솜체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-beomsomche@0.2.0/beomsomche.woff2"
+   },
+   "size": 2850328
+  },
+  {
+   "id": "dl-nanum-handwritting-bujangnim-nunchiche",
+   "name": "나눔손글씨 부장님 눈치체",
+   "label": "나눔손글씨 부장님 눈치체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-bujangnim-nunchiche@0.2.0/bujangnim-nunchiche.woff2"
+   },
+   "size": 3049068
+  },
+  {
+   "id": "dl-nanum-handwritting-buggeugseong",
+   "name": "나눔손글씨 북극성",
+   "label": "나눔손글씨 북극성",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-buggeugseong@0.2.0/buggeugseong.woff2"
+   },
+   "size": 2889888
+  },
+  {
+   "id": "dl-nanum-handwritting-bisangche",
+   "name": "나눔손글씨 비상체",
+   "label": "나눔손글씨 비상체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-bisangche@0.2.0/bisangche.woff2"
+   },
+   "size": 2590984
+  },
+  {
+   "id": "dl-nanum-handwritting-ppanggunimam-songeul-ssi",
+   "name": "나눔손글씨 빵구니맘 손글씨",
+   "label": "나눔손글씨 빵구니맘 손글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-ppanggunimam-songeul-ssi@0.2.0/ppanggunimam-songeul-ssi.woff2"
+   },
+   "size": 2597372
+  },
+  {
+   "id": "dl-nanum-handwritting-salanghae-adeul",
+   "name": "나눔손글씨 사랑해 아들",
+   "label": "나눔손글씨 사랑해 아들",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-salanghae-adeul@0.2.0/salanghae-adeul.woff2"
+   },
+   "size": 2720848
+  },
+  {
+   "id": "dl-nanum-handwritting-sanghaechanmiche",
+   "name": "나눔손글씨 상해찬미체",
+   "label": "나눔손글씨 상해찬미체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-sanghaechanmiche@0.2.0/sanghaechanmiche.woff2"
+   },
+   "size": 2637908
+  },
+  {
+   "id": "dl-nanum-handwritting-seongsilche",
+   "name": "나눔손글씨 성실체",
+   "label": "나눔손글씨 성실체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-seongsilche@0.2.0/seongsilche.woff2"
+   },
+   "size": 2608428
+  },
+  {
+   "id": "dl-nanum-handwritting-segyejeog-in-hangeul",
+   "name": "나눔손글씨 세계적인 한글",
+   "label": "나눔손글씨 세계적인 한글",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-segyejeog-in-hangeul@0.2.0/segyejeog-in-hangeul.woff2"
+   },
+   "size": 2585540
+  },
+  {
+   "id": "dl-nanum-handwritting-se-ache",
+   "name": "나눔손글씨 세아체",
+   "label": "나눔손글씨 세아체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-se-ache@0.2.0/se-ache.woff2"
+   },
+   "size": 2857820
+  },
+  {
+   "id": "dl-nanum-handwritting-sehwache",
+   "name": "나눔손글씨 세화체",
+   "label": "나눔손글씨 세화체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-sehwache@0.2.0/sehwache.woff2"
+   },
+   "size": 2718784
+  },
+  {
+   "id": "dl-nanum-handwritting-somiche",
+   "name": "나눔손글씨 소미체",
+   "label": "나눔손글씨 소미체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-somiche@0.2.0/somiche.woff2"
+   },
+   "size": 2974816
+  },
+  {
+   "id": "dl-nanum-handwritting-sobanggwan-ui-gido",
+   "name": "나눔손글씨 소방관의 기도",
+   "label": "나눔손글씨 소방관의 기도",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-sobanggwan-ui-gido@0.2.0/sobanggwan-ui-gido.woff2"
+   },
+   "size": 3011528
+  },
+  {
+   "id": "dl-nanum-handwritting-sonpyeonjiche",
+   "name": "나눔손글씨 손편지체",
+   "label": "나눔손글씨 손편지체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-sonpyeonjiche@0.2.0/sonpyeonjiche.woff2"
+   },
+   "size": 2661216
+  },
+  {
+   "id": "dl-nanum-handwritting-sujub-eun-daehagsaeng",
+   "name": "나눔손글씨 수줍은 대학생",
+   "label": "나눔손글씨 수줍은 대학생",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-sujub-eun-daehagsaeng@0.2.0/sujub-eun-daehagsaeng.woff2"
+   },
+   "size": 2608584
+  },
+  {
+   "id": "dl-nanum-handwritting-si-u-gwi-yeo-wo",
+   "name": "나눔손글씨 시우 귀여워",
+   "label": "나눔손글씨 시우 귀여워",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-si-u-gwi-yeo-wo@0.2.0/si-u-gwi-yeo-wo.woff2"
+   },
+   "size": 2668284
+  },
+  {
+   "id": "dl-nanum-handwritting-sinhonbubu",
+   "name": "나눔손글씨 신혼부부",
+   "label": "나눔손글씨 신혼부부",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-sinhonbubu@0.2.0/sinhonbubu.woff2"
+   },
+   "size": 2522028
+  },
+  {
+   "id": "dl-nanum-handwritting-agisalangche",
+   "name": "나눔손글씨 아기사랑체",
+   "label": "나눔손글씨 아기사랑체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-agisalangche@0.2.0/agisalangche.woff2"
+   },
+   "size": 2784640
+  },
+  {
+   "id": "dl-nanum-handwritting-aleumdeuli-kkochnamu",
+   "name": "나눔손글씨 아름드리 꽃나무",
+   "label": "나눔손글씨 아름드리 꽃나무",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-aleumdeuli-kkochnamu@0.2.0/aleumdeuli-kkochnamu.woff2"
+   },
+   "size": 2811412
+  },
+  {
+   "id": "dl-nanum-handwritting-a-ppageul-ssi",
+   "name": "나눔손글씨 아빠글씨",
+   "label": "나눔손글씨 아빠글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-a-ppageul-ssi@0.2.0/a-ppageul-ssi.woff2"
+   },
+   "size": 2904868
+  },
+  {
+   "id": "dl-nanum-handwritting-a-ppa-ui-yeon-aepyeonji",
+   "name": "나눔손글씨 아빠의 연애편지",
+   "label": "나눔손글씨 아빠의 연애편지",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-a-ppa-ui-yeon-aepyeonji@0.2.0/a-ppa-ui-yeon-aepyeonji.woff2"
+   },
+   "size": 2878696
+  },
+  {
+   "id": "dl-nanum-handwritting-a-inmam-songeul-ssi",
+   "name": "나눔손글씨 아인맘 손글씨",
+   "label": "나눔손글씨 아인맘 손글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-a-inmam-songeul-ssi@0.2.0/a-inmam-songeul-ssi.woff2"
+   },
+   "size": 2687036
+  },
+  {
+   "id": "dl-nanum-handwritting-ajumma-ja-yu",
+   "name": "나눔손글씨 아줌마 자유",
+   "label": "나눔손글씨 아줌마 자유",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-ajumma-ja-yu@0.2.0/ajumma-ja-yu.woff2"
+   },
+   "size": 2582796
+  },
+  {
+   "id": "dl-nanum-handwritting-anssangche",
+   "name": "나눔손글씨 안쌍체",
+   "label": "나눔손글씨 안쌍체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-anssangche@0.2.0/anssangche.woff2"
+   },
+   "size": 3001676
+  },
+  {
+   "id": "dl-nanum-handwritting-amseuteleudam",
+   "name": "나눔손글씨 암스테르담",
+   "label": "나눔손글씨 암스테르담",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-amseuteleudam@0.2.0/amseuteleudam.woff2"
+   },
+   "size": 2616696
+  },
+  {
+   "id": "dl-nanum-handwritting-yageunhaneun-gimju-im",
+   "name": "나눔손글씨 야근하는 김주임",
+   "label": "나눔손글씨 야근하는 김주임",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-yageunhaneun-gimju-im@0.2.0/yageunhaneun-gimju-im.woff2"
+   },
+   "size": 2897872
+  },
+  {
+   "id": "dl-nanum-handwritting-yachaejangsu-baeggeumlye",
+   "name": "나눔손글씨 야채장수 백금례",
+   "label": "나눔손글씨 야채장수 백금례",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-yachaejangsu-baeggeumlye@0.2.0/yachaejangsu-baeggeumlye.woff2"
+   },
+   "size": 2766724
+  },
+  {
+   "id": "dl-nanum-handwritting-eommasalang",
+   "name": "나눔손글씨 엄마사랑",
+   "label": "나눔손글씨 엄마사랑",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-eommasalang@0.2.0/eommasalang.woff2"
+   },
+   "size": 2594556
+  },
+  {
+   "id": "dl-nanum-handwritting-eonggeongkwiche",
+   "name": "나눔손글씨 엉겅퀴체",
+   "label": "나눔손글씨 엉겅퀴체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-eonggeongkwiche@0.2.0/eonggeongkwiche.woff2"
+   },
+   "size": 2811844
+  },
+  {
+   "id": "dl-nanum-handwritting-yeoleumgeul-ssi",
+   "name": "나눔손글씨 여름글씨",
+   "label": "나눔손글씨 여름글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-yeoleumgeul-ssi@0.2.0/yeoleumgeul-ssi.woff2"
+   },
+   "size": 2791072
+  },
+  {
+   "id": "dl-nanum-handwritting-yeonjiche",
+   "name": "나눔손글씨 연지체",
+   "label": "나눔손글씨 연지체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-yeonjiche@0.2.0/yeonjiche.woff2"
+   },
+   "size": 2881996
+  },
+  {
+   "id": "dl-nanum-handwritting-yeol-ahob-ui-ban-jjag-im",
+   "name": "나눔손글씨 열아홉의 반짝임",
+   "label": "나눔손글씨 열아홉의 반짝임",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-yeol-ahob-ui-ban-jjag-im@0.2.0/yeol-ahob-ui-ban-jjag-im.woff2"
+   },
+   "size": 2781480
+  },
+  {
+   "id": "dl-nanum-handwritting-yeol-ilche",
+   "name": "나눔손글씨 열일체",
+   "label": "나눔손글씨 열일체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-yeol-ilche@0.2.0/yeol-ilche.woff2"
+   },
+   "size": 2778600
+  },
+  {
+   "id": "dl-nanum-handwritting-yedangche",
+   "name": "나눔손글씨 예당체",
+   "label": "나눔손글씨 예당체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-yedangche@0.2.0/yedangche.woff2"
+   },
+   "size": 2709456
+  },
+  {
+   "id": "dl-nanum-handwritting-ye-ppeun-mingyeongche",
+   "name": "나눔손글씨 예쁜 민경체",
+   "label": "나눔손글씨 예쁜 민경체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-ye-ppeun-mingyeongche@0.2.0/ye-ppeun-mingyeongche.woff2"
+   },
+   "size": 2574080
+  },
+  {
+   "id": "dl-nanum-handwritting-ogbiche",
+   "name": "나눔손글씨 옥비체",
+   "label": "나눔손글씨 옥비체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-ogbiche@0.2.0/ogbiche.woff2"
+   },
+   "size": 3108680
+  },
+  {
+   "id": "dl-nanum-handwritting-wa-ildeu",
+   "name": "나눔손글씨 와일드",
+   "label": "나눔손글씨 와일드",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-wa-ildeu@0.2.0/wa-ildeu.woff2"
+   },
+   "size": 2762924
+  },
+  {
+   "id": "dl-nanum-handwritting-oehalmeonigeul-ssi",
+   "name": "나눔손글씨 외할머니글씨",
+   "label": "나눔손글씨 외할머니글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-oehalmeonigeul-ssi@0.2.0/oehalmeonigeul-ssi.woff2"
+   },
+   "size": 2983212
+  },
+  {
+   "id": "dl-nanum-handwritting-oensonjab-ido-ye-ppeo",
+   "name": "나눔손글씨 왼손잡이도 예뻐",
+   "label": "나눔손글씨 왼손잡이도 예뻐",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-oensonjab-ido-ye-ppeo@0.2.0/oensonjab-ido-ye-ppeo.woff2"
+   },
+   "size": 2654616
+  },
+  {
+   "id": "dl-nanum-handwritting-uli-ttal-songeul-ssi",
+   "name": "나눔손글씨 우리딸 손글씨",
+   "label": "나눔손글씨 우리딸 손글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-uli-ttal-songeul-ssi@0.2.0/uli-ttal-songeul-ssi.woff2"
+   },
+   "size": 2831552
+  },
+  {
+   "id": "dl-nanum-handwritting-yuni-ttingttangttingttang",
+   "name": "나눔손글씨 유니 띵땅띵땅",
+   "label": "나눔손글씨 유니 띵땅띵땅",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-yuni-ttingttangttingttang@0.2.0/yuni-ttingttangttingttang.woff2"
+   },
+   "size": 2391116
+  },
+  {
+   "id": "dl-nanum-handwritting-uimi-issneun-hangeul",
+   "name": "나눔손글씨 의미있는 한글",
+   "label": "나눔손글씨 의미있는 한글",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-uimi-issneun-hangeul@0.2.0/uimi-issneun-hangeul.woff2"
+   },
+   "size": 2563968
+  },
+  {
+   "id": "dl-nanum-handwritting-jabusimji-u",
+   "name": "나눔손글씨 자부심지우",
+   "label": "나눔손글씨 자부심지우",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-jabusimji-u@0.2.0/jabusimji-u.woff2"
+   },
+   "size": 2352680
+  },
+  {
+   "id": "dl-nanum-handwritting-jalhago-iss-eo",
+   "name": "나눔손글씨 잘하고 있어",
+   "label": "나눔손글씨 잘하고 있어",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-jalhago-iss-eo@0.2.0/jalhago-iss-eo.woff2"
+   },
+   "size": 2887760
+  },
+  {
+   "id": "dl-nanum-handwritting-jangmiche",
+   "name": "나눔손글씨 장미체",
+   "label": "나눔손글씨 장미체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-jangmiche@0.2.0/jangmiche.woff2"
+   },
+   "size": 2630256
+  },
+  {
+   "id": "dl-nanum-handwritting-jeomkkolche",
+   "name": "나눔손글씨 점꼴체",
+   "label": "나눔손글씨 점꼴체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-jeomkkolche@0.2.0/jeomkkolche.woff2"
+   },
+   "size": 3540776
+  },
+  {
+   "id": "dl-nanum-handwritting-jeong-eunche",
+   "name": "나눔손글씨 정은체",
+   "label": "나눔손글씨 정은체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-jeong-eunche@0.2.0/jeong-eunche.woff2"
+   },
+   "size": 2861688
+  },
+  {
+   "id": "dl-nanum-handwritting-junghagsaeng",
+   "name": "나눔손글씨 중학생",
+   "label": "나눔손글씨 중학생",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-junghagsaeng@0.2.0/junghagsaeng.woff2"
+   },
+   "size": 2741464
+  },
+  {
+   "id": "dl-nanum-handwritting-jinju-baggyeong-ache",
+   "name": "나눔손글씨 진주 박경아체",
+   "label": "나눔손글씨 진주 박경아체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-jinju-baggyeong-ache@0.2.0/jinju-baggyeong-ache.woff2"
+   },
+   "size": 2770056
+  },
+  {
+   "id": "dl-nanum-handwritting-cheolpilgeul-ssi",
+   "name": "나눔손글씨 철필글씨",
+   "label": "나눔손글씨 철필글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-cheolpilgeul-ssi@0.2.0/cheolpilgeul-ssi.woff2"
+   },
+   "size": 3044652
+  },
+  {
+   "id": "dl-nanum-handwritting-chodinghuimang",
+   "name": "나눔손글씨 초딩희망",
+   "label": "나눔손글씨 초딩희망",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-chodinghuimang@0.2.0/chodinghuimang.woff2"
+   },
+   "size": 2833368
+  },
+  {
+   "id": "dl-nanum-handwritting-kalgugsu",
+   "name": "나눔손글씨 칼국수",
+   "label": "나눔손글씨 칼국수",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-kalgugsu@0.2.0/kalgugsu.woff2"
+   },
+   "size": 2994812
+  },
+  {
+   "id": "dl-nanum-handwritting-kokoche",
+   "name": "나눔손글씨 코코체",
+   "label": "나눔손글씨 코코체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-kokoche@0.2.0/kokoche.woff2"
+   },
+   "size": 2487228
+  },
+  {
+   "id": "dl-nanum-handwritting-hanadoe-eo-songeul-ssi",
+   "name": "나눔손글씨 하나되어 손글씨",
+   "label": "나눔손글씨 하나되어 손글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-hanadoe-eo-songeul-ssi@0.2.0/hanadoe-eo-songeul-ssi.woff2"
+   },
+   "size": 2404616
+  },
+  {
+   "id": "dl-nanum-handwritting-hanasongeul-ssi",
+   "name": "나눔손글씨 하나손글씨",
+   "label": "나눔손글씨 하나손글씨",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-hanasongeul-ssi@0.2.0/hanasongeul-ssi.woff2"
+   },
+   "size": 3124192
+  },
+  {
+   "id": "dl-nanum-handwritting-halamche",
+   "name": "나눔손글씨 하람체",
+   "label": "나눔손글씨 하람체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-halamche@0.2.0/halamche.woff2"
+   },
+   "size": 2473536
+  },
+  {
+   "id": "dl-nanum-handwritting-han-yunche",
+   "name": "나눔손글씨 한윤체",
+   "label": "나눔손글씨 한윤체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-han-yunche@0.2.0/han-yunche.woff2"
+   },
+   "size": 3192024
+  },
+  {
+   "id": "dl-nanum-handwritting-hal-abeoji-uinanum",
+   "name": "나눔손글씨 할아버지의나눔",
+   "label": "나눔손글씨 할아버지의나눔",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-hal-abeoji-uinanum@0.2.0/hal-abeoji-uinanum.woff2"
+   },
+   "size": 3016028
+  },
+  {
+   "id": "dl-nanum-handwritting-haengboghan-dobi",
+   "name": "나눔손글씨 행복한 도비",
+   "label": "나눔손글씨 행복한 도비",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-haengboghan-dobi@0.2.0/haengboghan-dobi.woff2"
+   },
+   "size": 2743240
+  },
+  {
+   "id": "dl-nanum-handwritting-hyeog-iche",
+   "name": "나눔손글씨 혁이체",
+   "label": "나눔손글씨 혁이체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-hyeog-iche@0.2.0/hyeog-iche.woff2"
+   },
+   "size": 3437392
+  },
+  {
+   "id": "dl-nanum-handwritting-hyejunche",
+   "name": "나눔손글씨 혜준체",
+   "label": "나눔손글씨 혜준체",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-hyejunche@0.2.0/hyejunche.woff2"
+   },
+   "size": 2802952
+  },
+  {
+   "id": "dl-nanum-handwritting-hyonam-neul-hwa-iting",
+   "name": "나눔손글씨 효남 늘 화이팅",
+   "label": "나눔손글씨 효남 늘 화이팅",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-hyonam-neul-hwa-iting@0.2.0/hyonam-neul-hwa-iting.woff2"
+   },
+   "size": 2691100
+  },
+  {
+   "id": "dl-nanum-handwritting-huimangnuli",
+   "name": "나눔손글씨 희망누리",
+   "label": "나눔손글씨 희망누리",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-huimangnuli@0.2.0/huimangnuli.woff2"
+   },
+   "size": 2452576
+  },
+  {
+   "id": "dl-nanum-handwritting-huinkkolisuli",
+   "name": "나눔손글씨 흰꼬리수리",
+   "label": "나눔손글씨 흰꼬리수리",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-huinkkolisuli@0.2.0/huinkkolisuli.woff2"
+   },
+   "size": 2875608
+  },
+  {
+   "id": "dl-nanum-handwritting-himnaelaneun-malbodan",
+   "name": "나눔손글씨 힘내라는 말보단",
+   "label": "나눔손글씨 힘내라는 말보단",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/nanum-handwritting-himnaelaneun-malbodan@0.2.0/himnaelaneun-malbodan.woff2"
+   },
+   "size": 2708384
+  },
+  {
+   "id": "dl-hakgyoansim-butpen",
+   "name": "학교안심 붓펜",
+   "label": "학교안심 붓펜",
+   "cat": "손글씨",
+   "files": {
+    "400": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-butpen@0.1.0/HakgyoansimButpenL.woff2",
+    "700": "https://cdn.jsdelivr.net/npm/@kfonts/hakgyoansim-butpen@0.1.0/HakgyoansimButpenB.woff2"
+   },
+   "size": 727152
+  }
+ ],
+ "aliases": {
+  "맑은 고딕": "Noto Sans KR",
+  "Malgun Gothic": "Noto Sans KR",
+  "한컴 고딕": "Noto Sans KR",
+  "Hancom Gothic": "Noto Sans KR",
+  "애플 SD 산돌고딕 Neo": "Noto Sans KR",
+  "Apple SD Gothic Neo": "Noto Sans KR",
+  "본고딕": "Noto Sans KR",
+  "굴림": "나눔고딕",
+  "Gulim": "나눔고딕",
+  "굴림체": "나눔고딕",
+  "GulimChe": "나눔고딕",
+  "새굴림": "나눔고딕",
+  "New Gulim": "나눔고딕",
+  "돋움": "나눔고딕",
+  "Dotum": "나눔고딕",
+  "돋움체": "나눔고딕",
+  "DotumChe": "나눔고딕",
+  "한컴돋움": "나눔고딕",
+  "Haansoft Dotum": "나눔고딕",
+  "함초롬돋움": "나눔고딕",
+  "HCR Dotum": "나눔고딕",
+  "HY중고딕": "나눔고딕",
+  "HYGothic-Medium": "나눔고딕",
+  "휴먼고딕": "나눔고딕",
+  "중고딕": "나눔고딕",
+  "고딕": "나눔고딕",
+  "나눔고딕 ExtraBold": "나눔고딕",
+  "바탕": "Noto Serif KR",
+  "Batang": "Noto Serif KR",
+  "바탕체": "Noto Serif KR",
+  "BatangChe": "Noto Serif KR",
+  "한컴바탕": "Noto Serif KR",
+  "Haansoft Batang": "Noto Serif KR",
+  "함초롬바탕": "Noto Serif KR",
+  "HCR Batang": "Noto Serif KR",
+  "신명조": "Noto Serif KR",
+  "HY신명조": "Noto Serif KR",
+  "HYSinMyeongJo-Medium": "Noto Serif KR",
+  "휴먼명조": "Noto Serif KR",
+  "명조": "Noto Serif KR",
+  "견명조": "Noto Serif KR",
+  "HY견명조": "Noto Serif KR",
+  "HYGyeonMyeongJo": "Noto Serif KR",
+  "한양신명조": "Noto Serif KR",
+  "문체부 바탕체": "Noto Serif KR",
+  "AppleMyungjo": "Noto Serif KR",
+  "궁서": "송명",
+  "Gungsuh": "송명",
+  "궁서체": "송명",
+  "GungsuhChe": "송명",
+  "HY궁서": "송명",
+  "휴먼옛체": "송명",
+  "HY헤드라인M": "검은고딕",
+  "HYHeadLine-Medium": "검은고딕",
+  "HY견고딕": "검은고딕",
+  "HYGothic-Extra": "검은고딕",
+  "견고딕": "검은고딕",
+  "휴먼둥근헤드라인": "검은고딕",
+  "HY둥근고딕": "나눔스퀘어라운드",
+  "HY얕은샘물M": "나눔스퀘어라운드",
+  "휴먼둥근고딕": "나눔스퀘어라운드",
+  "HY엽서M": "나눔손글씨 펜",
+  "휴먼편지체": "나눔손글씨 펜",
+  "Consolas": "D2Coding",
+  "Courier New": "D2Coding",
+  "Courier": "D2Coding"
+ }
+}

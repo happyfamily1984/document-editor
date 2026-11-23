@@ -3,6 +3,7 @@ import * as pdfjs from 'pdfjs-dist/legacy/build/pdf.mjs';
 import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
 import { PDFDocument, degrees } from 'pdf-lib';
 import { el, toast, busy, promptText, confirmDialog } from '../ui.js';
+import { pickFont, ensureFonts, cssFamily } from '../fonts.js';
 
 pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
 const ASSET = new URL('./pdfjs/', document.baseURI).href;
@@ -73,11 +74,13 @@ export async function open({ bytes, body, scroll, ctx }) {
   }
 
   // 글은 기기 글꼴로 그림을 만들어 넣는다(한글 글꼴을 따로 싣지 않아도 어느 글자든 들어간다)
-  async function addText(index, pt, text, size) {
+  let lastFont = 'Noto Sans KR';
+  async function addText(index, pt, text, size, fontName) {
+    await ensureFonts([fontName], text);
     const K = 4, lines = text.split('\n'), lh = size * 1.35;
     const canvas = document.createElement('canvas');
     let g = canvas.getContext('2d');
-    const font = `${size * K}px "Noto Sans KR", "Noto Sans CJK KR", sans-serif`;
+    const font = `${size * K}px ${cssFamily(fontName)}`;
     g.font = font;
     const w = Math.max(1, ...lines.map((l) => g.measureText(l).width)) / K + 2, h = lines.length * lh + size * 0.2;
     canvas.width = Math.ceil(w * K); canvas.height = Math.ceil(h * K);
@@ -100,13 +103,18 @@ export async function open({ bytes, body, scroll, ctx }) {
     const i = Number(div.dataset.i), r = div.getBoundingClientRect(), item = pages[i];
     const vp = item.page.getViewport({ scale: 1 });
     const pt = vp.convertToPdfPoint(((e.clientX - r.left) / r.width) * vp.width, ((e.clientY - r.top) / r.height) * vp.height);
-    let size = 12;
+    let size = 12, fontName = lastFont;
     const text = await promptText('넣을 글', '', {
       multiline: true, okLabel: '넣기',
-      extra: () => { const s = el('select', { 'aria-label': '글자 크기', onchange: () => (size = Number(s.value)) }, [8, 10, 12, 14, 18, 24, 32].map((n) => el('option', { value: n, text: `글자 크기 ${n}`, selected: n === 12 }))); return s; },
+      extra: () => {
+        const s = el('select', { 'aria-label': '글자 크기', onchange: () => (size = Number(s.value)) }, [8, 10, 12, 14, 18, 24, 32, 48].map((n) => el('option', { value: n, text: `글자 크기 ${n}`, selected: n === 12 })));
+        const f = el('button', { class: 'chip on', text: '글꼴: ' + fontName, onclick: async () => { const v = await pickFont({ current: fontName }); if (v) { fontName = v; f.textContent = '글꼴: ' + v; } } });
+        return el('div', {}, el('div', { class: 'chip-row' }, f), s);
+      },
     });
     if (!text || !text.trim()) return;
-    try { await addText(i, pt, text, size); } catch (err) { toast('글을 넣지 못했습니다: ' + err.message); }
+    lastFont = fontName;
+    try { await addText(i, pt, text, size, fontName); } catch (err) { toast('글을 넣지 못했습니다: ' + err.message); }
   });
 
   await load();
