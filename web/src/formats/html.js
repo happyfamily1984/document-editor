@@ -34,6 +34,7 @@ export async function open({ bytes, body, ctx }) {
   let blocked = 0;
   const NET = /^\s*(https?:)?\/\//i;
   for (const e of parsed.querySelectorAll('[src], [srcset], link[href], [poster], object[data], [background]')) {
+    if (e.hasAttribute(MARK)) continue; // 앱이 넣은 글꼴 목록은 그대로
     for (const a of ['src', 'srcset', 'poster', 'data', 'background', ...(e.localName === 'link' ? ['href'] : [])]) {
       const v = e.getAttribute(a);
       if (v != null && (NET.test(v) || (a === 'srcset' && /(https?:)?\/\//i.test(v)))) { e.setAttribute('data-docedit-' + a, v); e.removeAttribute(a); blocked++; }
