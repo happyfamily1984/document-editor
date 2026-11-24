@@ -113,7 +113,7 @@ public class MainActivity extends Activity {
         {"docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"}, {"doc", "application/msword"},
         {"xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}, {"xls", "application/vnd.ms-excel"},
         {"pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"}, {"ppt", "application/vnd.ms-powerpoint"},
-        {"pdf", "application/pdf"}, {"txt", "text/plain"},
+        {"pdf", "application/pdf"}, {"txt", "text/plain"}, {"html", "text/html"},
     };
 
     /** 그 형식의 파일을 열 때와 똑같은 요청(견본 파일)을 만든다. 파일 관리자가 보내는 MIME과 맞춘다. */

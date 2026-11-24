@@ -10,12 +10,12 @@ const manageFonts = () => pickFont({ manage: true, title: '글꼴 (받기·지�
 
 const KINDS = {
   docx: 'docx', docm: 'docx', dotx: 'docx', xlsx: 'xlsx', xlsm: 'xlsx', xls: 'xlsx', csv: 'xlsx', tsv: 'xlsx',
-  pptx: 'pptx', ppsx: 'pptx', pdf: 'pdf', hwp: 'hwp', hwpx: 'hwp', doc: 'doc', ppt: 'ppt',
+  pptx: 'pptx', ppsx: 'pptx', pdf: 'pdf', hwp: 'hwp', hwpx: 'hwp', doc: 'doc', ppt: 'ppt', html: 'html', htm: 'html', xhtml: 'html',
 };
-const BADGE = { docx: 'W', doc: 'W', xlsx: 'X', pptx: 'P', ppt: 'P', pdf: 'PDF', hwp: '한', txt: 'T' };
+const BADGE = { docx: 'W', doc: 'W', xlsx: 'X', pptx: 'P', ppt: 'P', pdf: 'PDF', hwp: '한', txt: 'T', html: '<>' };
 const loaders = {
   docx: () => import('./formats/docx.js'), xlsx: () => import('./formats/xlsx.js'), pptx: () => import('./formats/pptx.js'),
-  pdf: () => import('./formats/pdf.js'), hwp: () => import('./formats/hwp.js'), txt: () => import('./formats/text.js'),
+  pdf: () => import('./formats/pdf.js'), hwp: () => import('./formats/hwp.js'), txt: () => import('./formats/text.js'), html: () => import('./formats/html.js'),
 };
 const extOf = (name) => (/\.([a-z0-9]+)$/i.exec(name || '') || [, ''])[1].toLowerCase();
 const baseOf = (name) => (name || '문서').replace(/\.[a-z0-9]+$/i, '');
@@ -110,10 +110,13 @@ async function detect(name, bytes) {
   }
   if (KINDS[ext] === 'hwp') return { kind: 'hwp', ext }; // HWP 3.0 등
   if (ext === 'csv' || ext === 'tsv') return { kind: 'xlsx', ext };
+  const isHtmlExt = ['html', 'htm', 'xhtml', 'shtml'].includes(ext);
   // 은행·관공서에서 내려받는 "엑셀" 파일은 속이 HTML 표나 XML인 경우가 많다
   const headText = new TextDecoder('latin1').decode(b.subarray(0, 3000)).toLowerCase();
   const sheetLike = /<table|<html|urn:schemas-microsoft-com:office:spreadsheet|<\?mso-application/.test(headText);
-  if (sheetLike && (KINDS[ext] === 'xlsx' || /ms-excel|office:excel|office:spreadsheet|mso-application progid="excel/.test(headText))) return { kind: 'xlsx', ext: 'xls' };
+  if (sheetLike && (KINDS[ext] === 'xlsx' || (!isHtmlExt && /ms-excel|office:excel|office:spreadsheet|mso-application progid="excel/.test(headText)))) return { kind: 'xlsx', ext: 'xls' };
+  // 웹 문서(HTML): 확장자가 html이거나, 확장자 없이 내용이 HTML로 시작할 때
+  if (isHtmlExt || (!KINDS[ext] && !['txt', 'md', 'csv'].includes(ext) && /^\s*(\ufeff)?\s*(<!doctype html|<html)/i.test(new TextDecoder().decode(b.subarray(0, 600))))) return { kind: 'html', ext: 'html' };
   // 나머지는 글 파일로 본다. 글이 아닌 이진 파일이면 거절.
   const head = b.subarray(0, 4096);
   if (!(b[0] === 0xff && b[1] === 0xfe) && !(b[0] === 0xfe && b[1] === 0xff) && head.some((x) => x === 0)) throw new Error('지원하지 않는 파일 형식입니다.');
@@ -427,18 +430,18 @@ async function newDoc(kind) {
 
 function about() {
   sheet('안내', () => el('div', { class: 'about' },
-    el('p', { text: '한글(HWP·HWPX), 워드(DOCX·DOC), 엑셀(XLSX·XLS·CSV), 파워포인트(PPTX·PPT), PDF, 글 파일을 열고 고칠 수 있습니다.' }),
+    el('p', { text: '한글(HWP·HWPX), 워드(DOCX·DOC), 엑셀(XLSX·XLS·CSV), 파워포인트(PPTX·PPT), PDF, 웹 문서(HTML), 글 파일을 열고 고칠 수 있습니다.' }),
     el('p', { text: '파일은 이 기기 안에서만 열고 고치며, 어디에도 올리지 않습니다. 인터넷 연결 없이도 동작합니다. (글꼴을 받을 때만 인터넷에서 글꼴 파일을 내려받으며, 이때 문서 내용은 보내지 않습니다.)' }),
     el('p', { text: '이 앱은 있는 그대로 제공되며, 파일 손상·손실에 대해 책임지지 않습니다. 중요한 문서는 원본을 따로 보관해 주세요.' }),
     el('p', { text: '한글·HWP는 한글과컴퓨터의, Word·Excel·PowerPoint는 Microsoft의 상표입니다. 이 앱은 두 회사와 관계없는 독립 앱입니다.' }),
     el('h4', { text: '오픈소스' }),
     el('p', { class: 'small', text: 'rhwp (MIT) · docx-preview (Apache-2.0) · pptx-renderer (Apache-2.0) · PDF.js (Apache-2.0) · pdf-lib (MIT) · SheetJS (Apache-2.0) · JSZip (MIT) · PptxGenJS (MIT) · cfb (Apache-2.0)' }),
     el('p', { class: 'small', text: '글꼴: 네이버 나눔글꼴·마루부리, 배달의민족 글꼴, 학교안심 글꼴, Noto Sans/Serif KR, Pretendard, SUIT, Wanted Sans, LINE Seed, 리디바탕, KCC-한빛, D2Coding, 구글 한글 글꼴 등 — 모두 SIL Open Font License 1.1' }),
-    el('p', { class: 'small', text: '문서 편집기 1.5' })));
+    el('p', { class: 'small', text: '문서 편집기 1.6' })));
 }
 
 // ───────── 기본 앱 설정 ─────────
-const DEFAULT_NAMES = { hwp: '한글 (HWP)', hwpx: '한글 (HWPX)', docx: '워드 (DOCX)', doc: '워드 (DOC)', xlsx: '엑셀 (XLSX)', xls: '엑셀 (XLS)', pptx: '파워포인트 (PPTX)', ppt: '파워포인트 (PPT)', pdf: 'PDF', txt: '글 파일 (TXT)' };
+const DEFAULT_NAMES = { hwp: '한글 (HWP)', hwpx: '한글 (HWPX)', docx: '워드 (DOCX)', doc: '워드 (DOC)', xlsx: '엑셀 (XLSX)', xls: '엑셀 (XLS)', pptx: '파워포인트 (PPTX)', ppt: '파워포인트 (PPT)', pdf: 'PDF', txt: '글 파일 (TXT)', html: '웹 문서 (HTML)' };
 let defaultsOpen = false;
 function defaultsSheet() {
   if (!native.isNative) return;
